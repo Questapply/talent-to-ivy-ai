@@ -48,8 +48,13 @@
   }
 }
 
+/* Enhanced Gradients */
 .bg-gradient {
-  background: linear-gradient(120deg, #8a56ff 0%, #6e40e6 100%);
+  background: linear-gradient(135deg, #8a56ff 0%, #6e40e6 100%);
+}
+
+.bg-gradient-soft {
+  background: linear-gradient(135deg, rgba(138, 86, 255, 0.8) 0%, rgba(110, 64, 230, 0.9) 100%);
 }
 
 .text-gradient {
@@ -60,6 +65,23 @@
   text-fill-color: transparent;
 }
 
+/* Glass Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.08);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+}
+
 .section-container {
   @apply container mx-auto px-4 md:px-6 py-12 md:py-24;
 }
@@ -68,9 +90,48 @@
   @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
 }
 
+/* Enhanced Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 4s infinite ease-in-out;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
 }
 
 .typing-effect {
@@ -90,4 +151,17 @@
   to {
     stroke-dashoffset: 0;
   }
+}
+
+/* Reveal on scroll */
+.reveal {
+  position: relative;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
 }
