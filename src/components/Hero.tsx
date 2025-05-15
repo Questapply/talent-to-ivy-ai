@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock, Check } from 'lucide-react';
 import Logo from './Logo';
 
 const Hero = () => {
@@ -52,6 +52,17 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Content area - enhanced with better typography and animations */}
           <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0 reveal">
+            {/* Success Rate Stat - Added based on request */}
+            <div className="absolute top-0 left-4 md:left-10 glass-effect px-4 py-2 rounded-xl shadow-lg backdrop-blur-md border border-cyan-400/20 flex items-center gap-3 animate-float" style={{animationDelay: "0.5s"}}>
+              <div className="w-9 h-9 bg-primary/30 rounded-full flex items-center justify-center">
+                <Clock className="w-5 h-5 text-cyan-400" />
+              </div>
+              <div className="text-left">
+                <div className="text-xs text-cyan-400/90 font-medium">Success Rate</div>
+                <div className="text-xl font-bold text-white">98.7%</div>
+              </div>
+            </div>
+            
             <div className="inline-flex items-center mb-3 px-4 py-1.5 bg-cyan-400/10 rounded-full text-cyan-400 text-sm font-medium border border-cyan-400/20 animate-float shadow-[0_0_15px_rgba(32,227,178,0.3)]">
               <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
               Revolutionary AI for Education
@@ -80,17 +91,28 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Updated visual area showing the complete image without text overlay */}
+          {/* Updated visual area with better image */}
           <div className="flex-1 relative reveal" style={{animationDelay: "0.3s"}}>
+            {/* Universities Stat - Added based on request */}
+            <div className="absolute -bottom-4 right-4 md:right-10 glass-effect px-4 py-2 rounded-xl shadow-lg backdrop-blur-md border border-cyan-400/20 flex items-center gap-3 animate-float" style={{animationDelay: "1s"}}>
+              <div className="w-9 h-9 bg-cyan-500/30 rounded-full flex items-center justify-center">
+                <Check className="w-5 h-5 text-cyan-400" />
+              </div>
+              <div className="text-left">
+                <div className="text-xs text-cyan-400/90 font-medium">Universities</div>
+                <div className="text-xl font-bold text-white">250+</div>
+              </div>
+            </div>
+            
             <div className="relative w-full h-[420px] md:h-[500px] rounded-2xl overflow-hidden animate-float shadow-[0_0_40px_rgba(32,227,178,0.35)] card-glow">
-              {/* Updated image with students and teacher - using the uploaded image */}
+              {/* Updated image with a better quality image of students */}
               <img 
-                src="/lovable-uploads/51903c37-f0ce-4390-9e4d-d1e41d6971b4.png" 
-                alt="Students with teacher" 
+                src="/lovable-uploads/b520072a-8afa-4808-b165-b800732249de.png" 
+                alt="Students collaborating" 
                 className="w-full h-full object-cover rounded-2xl"
               />
               
-              {/* AI Badge moved to top right corner so it doesn't overlap with content */}
+              {/* AI Badge */}
               <div className="absolute top-4 right-4 glass-effect px-3 py-2 rounded-full shadow-lg flex items-center gap-2 animate-float backdrop-blur-md border border-cyan-400/20" style={{animationDelay: "1s"}}>
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
                 <span className="text-xs font-medium text-cyan-300">AI Powered</span>
