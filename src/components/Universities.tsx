@@ -16,9 +16,10 @@ const universities = [
 
 const Universities = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollSpeed = 0.2; // Reduced speed for smoother animation
+  const animationRef = useRef<number | null>(null);
+  const scrollSpeed = 0.5; // Adjusted for smooth animation
   
-  // Animation effect for scrolling the universities horizontally
+  // Animation effect for scrolling the universities from right to left
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -30,22 +31,64 @@ const Universities = () => {
       container.appendChild(clone);
     });
     
-    let animationId: number;
-    let scrollPosition = 0;
+    // Set initial position
+    container.scrollLeft = 0;
+    let position = 0;
     
     const scroll = () => {
-      scrollPosition += scrollSpeed;
-      if (scrollPosition >= container.scrollWidth / 2) {
-        scrollPosition = 0;
+      position += scrollSpeed;
+      
+      // Reset when we've scrolled through all original items
+      if (position >= container.scrollWidth / 2) {
+        // Jump back to start without animation
+        position = 0;
+        container.scrollLeft = 0;
+      } else {
+        container.scrollLeft = position;
       }
-      container.scrollLeft = scrollPosition;
-      animationId = requestAnimationFrame(scroll);
+      
+      animationRef.current = requestAnimationFrame(scroll);
     };
     
-    animationId = requestAnimationFrame(scroll);
+    animationRef.current = requestAnimationFrame(scroll);
     
-    return () => cancelAnimationFrame(animationId);
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
   }, []);
+
+  // Pause animation on hover
+  const handleMouseEnter = () => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+  };
+
+  // Resume animation when not hovering
+  const handleMouseLeave = () => {
+    if (!animationRef.current && containerRef.current) {
+      const position = containerRef.current.scrollLeft;
+      
+      const scroll = () => {
+        if (!containerRef.current) return;
+        
+        const newPosition = position + scrollSpeed;
+        
+        if (newPosition >= containerRef.current.scrollWidth / 2) {
+          containerRef.current.scrollLeft = 0;
+        } else {
+          containerRef.current.scrollLeft = newPosition;
+        }
+        
+        animationRef.current = requestAnimationFrame(scroll);
+      };
+      
+      animationRef.current = requestAnimationFrame(scroll);
+    }
+  };
 
   return (
     <section id="universities" className="py-16 border-t border-white/10 relative">
@@ -60,22 +103,30 @@ const Universities = () => {
         </div>
         
         {/* Scrolling container */}
-        <div className="overflow-x-hidden relative">
+        <div 
+          className="overflow-x-hidden relative"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <div 
             ref={containerRef}
-            className="flex gap-8 py-4 w-max"
-            style={{ overflowX: 'hidden' }}
+            className="flex gap-8 py-8 w-max"
+            style={{ overflow: 'hidden' }}
           >
             {universities.map((university, index) => (
-              <div key={index} className="text-center group university-item flex-shrink-0">
-                <div className="w-20 h-20 md:w-24 md:h-24 glass-effect rounded-full mx-auto mb-2 flex items-center justify-center border border-white/10 group-hover:border-primary/30 transition-all overflow-hidden p-1">
+              <div key={index} className="text-center group university-item flex-shrink-0 transition-all duration-300 hover:scale-110">
+                <div className="w-24 h-24 md:w-28 md:h-28 glass-effect rounded-full mx-auto mb-4 flex items-center justify-center border border-white/10 group-hover:border-cyan-400/50 transition-all overflow-hidden p-2">
                   <img 
                     src={university.logo} 
                     alt={`${university.name} logo`}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain filter brightness-100 group-hover:brightness-110"
                   />
                 </div>
-                <p className="text-sm text-gray-400 group-hover:text-white transition-colors">{university.name}</p>
+                <div className="transform transition-transform group-hover:scale-105 group-hover:-translate-y-1">
+                  <p className="text-sm text-gray-400 group-hover:text-white transition-colors">
+                    {university.name}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
