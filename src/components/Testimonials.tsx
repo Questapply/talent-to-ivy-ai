@@ -98,11 +98,11 @@ const Testimonials = () => {
   useEffect(() => {
     if (!isVisible) return;
 
-    // Animation speeds and parameters
+    // Animation speeds and parameters - slower for smoother effect
     const columnSpeed = {
-      first: 40000, // 40 seconds for full cycle
-      second: 50000, // 50 seconds for full cycle
-      third: 45000 // 45 seconds for full cycle
+      first: 80000, // 80 seconds for full cycle (was 40000)
+      second: 90000, // 90 seconds for full cycle (was 50000)
+      third: 85000 // 85 seconds for full cycle (was 45000)
     };
 
     // Set up column animations using CSS animation
