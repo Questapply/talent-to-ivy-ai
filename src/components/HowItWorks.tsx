@@ -1,7 +1,6 @@
 
 import React, { useEffect } from 'react';
 import { roadmapData } from './roadmap/RoadmapData';
-import { Search, School, GraduationCap, FileText, Send } from 'lucide-react';
 
 const HowItWorks = () => {
   // Initialize reveal animation on component mount
@@ -27,7 +26,10 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <section id="howitworks" className="py-24 relative overflow-hidden bg-black">
+    <section id="howitworks" className="py-24 relative overflow-hidden">
+      {/* Background transition from black to white */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-white z-0"></div>
+      
       <div className="container px-4 mx-auto relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block mb-3 px-3 py-1 bg-black/70 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/10">
@@ -41,7 +43,7 @@ const HowItWorks = () => {
           </p>
         </div>
         
-        {/* Timeline roadmap based on the reference image */}
+        {/* Timeline roadmap with glass design */}
         <div className="relative mt-24 pb-10">
           {/* Vertical timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#20E3B2] to-[#8A56FF] z-0"></div>
@@ -54,8 +56,11 @@ const HowItWorks = () => {
               }`}
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#20E3B2] border-4 border-black z-20"></div>
+              {/* Timeline dot with glowing effect */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full border-2 border-[#20E3B2] bg-black z-20 flex items-center justify-center">
+                <span className="text-cyan-400 font-bold text-lg">{item.number}</span>
+                <div className="absolute w-full h-full rounded-full animate-pulse-gentle opacity-50 border border-[#20E3B2]"></div>
+              </div>
               
               {/* Content */}
               <div className={`w-1/2 ${item.position === "left" ? "pr-12" : "pl-12"}`}>
@@ -63,131 +68,190 @@ const HowItWorks = () => {
               </div>
               
               <div className={`w-1/2 ${item.position === "left" ? "pl-12" : "pr-12"}`}>
-                {/* Card */}
-                <div className="bg-[#0A0E15] rounded-xl p-6 border border-[#20E3B2]/30 shadow-xl relative overflow-hidden">
-                  {/* Card header with number and title */}
-                  <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 rounded-full bg-[#20E3B2] flex items-center justify-center text-black font-bold mr-3">
-                      {item.number}
+                {/* Glass Card */}
+                <div className="rounded-xl p-6 border border-[#20E3B2]/30 shadow-xl relative overflow-hidden backdrop-blur-md bg-black/40 tech-border">
+                  {/* Card header with icon and title */}
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 rounded-full bg-black/60 flex items-center justify-center border border-[#20E3B2]/40 mr-4">
+                      {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                    <h3 className="text-2xl font-bold text-white">{item.title}</h3>
                   </div>
                   
-                  {/* Card content */}
-                  <p className="text-white/70 mb-6">{item.description}</p>
+                  {/* Card description */}
+                  <p className="text-white/80 mb-6">{item.description}</p>
                   
-                  {/* Progress indicators */}
-                  <div className="space-y-4 mt-6">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-white/60">Application Status</span>
-                      <span className="text-sm text-white/80 font-medium">In Progress</span>
-                    </div>
-                    <div className="w-full bg-[#1A1E27] h-1.5 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-gradient-to-r from-[#20E3B2] to-[#8A56FF] rounded-full"
-                        style={{ width: `${item.progressValue}%` }}
-                      ></div>
-                    </div>
-                    <div className="flex items-center justify-between mt-2">
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 rounded-full bg-[#20E3B2] mr-2"></div>
-                        <span className="text-xs text-white/60">AI Support Available</span>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-2 h-2 rounded-full bg-[#8A56FF] mr-2"></div>
-                        <span className="text-xs text-white/60">Active</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Minimal animations based on the roadmap item */}
-                  <div className="absolute top-0 right-0 w-1/3 h-1/3 opacity-10">
+                  {/* Animation area based on roadmap item */}
+                  <div className="h-32 bg-black/30 rounded-lg mb-6 flex items-center justify-center p-2 overflow-hidden">
+                    {/* Custom animations per roadmap item */}
                     {index === 0 && (
-                      <div className="animate-float">
-                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                          <circle cx="50" cy="50" r="20" fill="none" stroke="#20E3B2" strokeWidth="1" />
-                          <path d="M50,30 L50,70" stroke="#20E3B2" strokeWidth="1" />
-                          <path d="M30,50 L70,50" stroke="#20E3B2" strokeWidth="1" />
-                          <circle cx="50" cy="50" r="5" fill="#20E3B2" className="animate-pulse-gentle" />
-                          <circle cx="40" cy="40" r="3" fill="#8A56FF" className="animate-pulse-gentle" />
-                          <circle cx="60" cy="60" r="3" fill="#8A56FF" className="animate-pulse-gentle" />
-                        </svg>
+                      <div className="relative w-full h-full">
+                        {/* School finder animation */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="relative w-24 h-24">
+                            <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-400/50 animate-spin" style={{ animationDuration: '20s' }}></div>
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full"></div>
+                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full"></div>
+                            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-green-500 rounded-full"></div>
+                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-yellow-500 rounded-full"></div>
+                            <div className="absolute top-1/4 right-1/4 w-3 h-3 bg-purple-500 rounded-full"></div>
+                            <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-orange-500 rounded-full"></div>
+                            <div className="w-10 h-10 bg-black/80 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                              <div className="w-6 h-6 text-cyan-400">
+                                {item.icon}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     )}
                     
                     {index === 1 && (
-                      <div className="animate-float">
-                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                          <rect x="30" y="30" width="40" height="40" fill="none" stroke="#8A56FF" strokeWidth="1" />
-                          <line x1="30" y1="40" x2="70" y2="40" stroke="#8A56FF" strokeWidth="1" />
-                          <line x1="40" y1="30" x2="40" y2="70" stroke="#8A56FF" strokeWidth="1" />
-                          <circle cx="50" cy="50" r="10" fill="none" stroke="#20E3B2" strokeWidth="1" className="animate-pulse-gentle" />
-                        </svg>
+                      <div className="relative w-full h-full flex items-center justify-center">
+                        {/* Program finder animation */}
+                        <div className="grid grid-cols-3 gap-2 w-full h-full">
+                          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                            <div key={i} className="bg-gradient-to-br from-blue-500/20 to-green-500/20 rounded-md flex items-center justify-center p-1 backdrop-blur-sm">
+                              <div className="text-xs text-cyan-400 opacity-80">
+                                {['CS', 'BIO', 'ENG', 'MED', 'ART', 'LAW', 'BUS', 'ECO', 'PSY'][i]}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <div className="w-16 h-16 bg-gradient-to-br from-cyan-400/10 to-purple-400/10 rounded-full animate-pulse-gentle flex items-center justify-center">
+                            <div className="w-10 h-10 bg-black/80 rounded-full flex items-center justify-center">
+                              <div className="w-6 h-6 text-cyan-400">
+                                {item.icon}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     )}
                     
                     {index === 2 && (
-                      <div className="animate-float">
-                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                          <circle cx="50" cy="30" r="10" fill="none" stroke="#20E3B2" strokeWidth="1" />
-                          <path d="M50,40 L50,60" stroke="#20E3B2" strokeWidth="1" />
-                          <path d="M40,70 L60,70" stroke="#20E3B2" strokeWidth="1" />
-                          <path d="M30,50 L70,50" stroke="#8A56FF" strokeWidth="1" strokeDasharray="2,2" />
-                          <circle cx="30" cy="50" r="3" fill="#8A56FF" className="animate-pulse-gentle" />
-                          <circle cx="70" cy="50" r="3" fill="#8A56FF" className="animate-pulse-gentle" />
-                        </svg>
+                      <div className="relative w-full h-full">
+                        {/* Professor finder animation */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="flex space-x-4">
+                            {[0, 1, 2].map((i) => (
+                              <div key={i} className="w-12 h-12 rounded-full bg-gradient-to-b from-cyan-400/20 to-transparent flex items-center justify-center animate-float" style={{ animationDelay: `${i * 0.3}s` }}>
+                                <div className="w-10 h-10 rounded-full bg-black/80 flex items-center justify-center">
+                                  <div className="w-6 h-6 text-cyan-400">
+                                    <Users size={18} />
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="absolute bottom-2 w-full text-center text-xs text-cyan-400/80">
+                          Connect with leading professors
+                        </div>
                       </div>
                     )}
                     
                     {index === 3 && (
-                      <div className="animate-float">
-                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                          <rect x="30" y="30" width="40" height="40" fill="none" stroke="#20E3B2" strokeWidth="1" />
-                          <line x1="40" y1="40" x2="60" y2="40" stroke="#8A56FF" strokeWidth="1" />
-                          <line x1="40" y1="50" x2="60" y2="50" stroke="#8A56FF" strokeWidth="1" />
-                          <line x1="40" y1="60" x2="50" y2="60" stroke="#8A56FF" strokeWidth="1" />
-                          <circle cx="65" cy="60" r="2" fill="#20E3B2" className="animate-pulse-gentle" />
-                        </svg>
+                      <div className="relative w-full h-full">
+                        {/* Resume builder animation */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-32 h-24 border border-cyan-400/30 rounded-md bg-black/40 p-2 flex flex-col">
+                            <div className="w-full h-2 bg-white/20 rounded-sm mb-2"></div>
+                            <div className="w-4/5 h-2 bg-white/20 rounded-sm mb-2"></div>
+                            <div className="w-3/4 h-2 bg-white/20 rounded-sm mb-1"></div>
+                            <div className="w-5/6 h-2 bg-white/20 rounded-sm mb-2"></div>
+                            <div className="w-2/3 h-2 bg-white/20 rounded-sm"></div>
+                            <div className="absolute top-0 right-0 w-1 h-full bg-cyan-400/30 animate-pulse-gentle"></div>
+                          </div>
+                        </div>
                       </div>
                     )}
                     
                     {index === 4 && (
-                      <div className="animate-float">
-                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                          <path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="#8A56FF" strokeWidth="1" />
-                          <line x1="40" y1="40" x2="60" y2="40" stroke="#20E3B2" strokeWidth="1" />
-                          <line x1="40" y1="50" x2="60" y2="50" stroke="#20E3B2" strokeWidth="1" />
-                          <line x1="40" y1="60" x2="50" y2="60" stroke="#20E3B2" strokeWidth="1" />
-                          <circle cx="65" cy="35" r="4" fill="none" stroke="#20E3B2" strokeWidth="1" className="animate-pulse-gentle" />
-                          <text x="65" y="37" fontSize="5" fill="#20E3B2" textAnchor="middle">AI</text>
-                        </svg>
+                      <div className="relative w-full h-full">
+                        {/* SOP builder animation */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-32 h-24 border border-cyan-400/30 rounded-md bg-black/40 p-3 relative">
+                            <div className="typing-effect w-full overflow-hidden whitespace-nowrap" style={{animationIterationCount: 'infinite', animationDuration: '4s'}}>
+                              <div className="h-2 w-full bg-cyan-400/40 rounded mb-1"></div>
+                              <div className="h-2 w-4/5 bg-cyan-400/40 rounded mb-1"></div>
+                              <div className="h-2 w-full bg-cyan-400/40 rounded"></div>
+                            </div>
+                            <div className="absolute bottom-3 left-3 w-2 h-4 bg-cyan-400/80 animate-pulse"></div>
+                          </div>
+                        </div>
                       </div>
                     )}
                     
                     {index === 5 && (
-                      <div className="animate-float">
-                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                          <path d="M30,40 C30,30 70,30 70,40" stroke="#20E3B2" strokeWidth="1" fill="none" />
-                          <path d="M30,60 C30,70 70,70 70,60" stroke="#20E3B2" strokeWidth="1" fill="none" />
-                          <path d="M30,40 L30,60" stroke="#8A56FF" strokeWidth="1" />
-                          <path d="M70,40 L70,60" stroke="#8A56FF" strokeWidth="1" />
-                          <circle cx="50" cy="50" r="5" fill="#8A56FF" className="animate-pulse-gentle" />
-                        </svg>
+                      <div className="relative w-full h-full">
+                        {/* LOR animation */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="flex space-x-2">
+                            <div className="w-20 h-24 border border-cyan-400/30 rounded-md bg-black/40 p-3 relative rotate-[-5deg]">
+                              <div className="h-2 w-full bg-white/20 rounded mb-1"></div>
+                              <div className="h-2 w-4/5 bg-white/20 rounded mb-1"></div>
+                              <div className="h-2 w-full bg-white/20 rounded mb-1"></div>
+                              <div className="absolute bottom-3 right-3 w-8 h-5 border-b border-cyan-400/70"></div>
+                            </div>
+                            <div className="w-20 h-24 border border-cyan-400/30 rounded-md bg-black/40 p-3 relative rotate-[5deg] mt-2">
+                              <div className="h-2 w-full bg-white/20 rounded mb-1"></div>
+                              <div className="h-2 w-4/5 bg-white/20 rounded mb-1"></div>
+                              <div className="h-2 w-full bg-white/20 rounded mb-1"></div>
+                              <div className="absolute bottom-3 right-3 w-8 h-5 border-b border-purple-400/70"></div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     )}
                     
                     {index === 6 && (
-                      <div className="animate-float">
-                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                          <path d="M40,30 L60,30 L70,50 L50,70 L30,50 Z" fill="none" stroke="#20E3B2" strokeWidth="1" />
-                          <path d="M50,30 L50,70" stroke="#8A56FF" strokeWidth="1" strokeDasharray="2,2" />
-                          <circle cx="50" cy="30" r="3" fill="#8A56FF" />
-                          <circle cx="50" cy="70" r="3" fill="#8A56FF" />
-                          <circle cx="50" cy="50" r="5" fill="none" stroke="#20E3B2" strokeWidth="1" className="animate-pulse-gentle" />
-                        </svg>
+                      <div className="relative w-full h-full">
+                        {/* Application submission animation */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="relative w-32 h-16">
+                            <div className="w-24 h-24 border border-cyan-400/30 rounded-md bg-black/40 absolute left-0 -top-4 rotate-[-5deg] z-10"></div>
+                            <div className="w-24 h-24 border border-cyan-400/30 rounded-md bg-black/40 absolute right-0 -top-6 rotate-[5deg] z-20"></div>
+                            <div className="w-24 h-24 border border-cyan-400/30 rounded-md bg-black/40 absolute left-4 -top-3 z-30 flex items-center justify-center">
+                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400/30 to-purple-500/30 flex items-center justify-center">
+                                <Check className="h-5 w-5 text-cyan-400" />
+                              </div>
+                            </div>
+                            <div className="absolute z-40 top-16 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse-gentle" style={{animationDelay: '0s'}}></div>
+                              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse-gentle" style={{animationDelay: '0.3s'}}></div>
+                              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse-gentle" style={{animationDelay: '0.6s'}}></div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     )}
                   </div>
+                  
+                  {/* Stats information */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {item.stats.map((stat, statIndex) => (
+                      <div key={statIndex} className="bg-black/30 rounded-lg p-3 backdrop-blur-sm">
+                        <div className="flex items-center mb-2">
+                          {stat.icon}
+                          <span className="text-xs text-white/70 ml-2">{stat.label}</span>
+                        </div>
+                        <div className="text-cyan-400 text-xl font-bold">{stat.value}</div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Additional info */}
+                  {item.additionalInfo && (
+                    <div className="mt-3 text-xs text-white/60">
+                      {item.additionalInfo}
+                    </div>
+                  )}
+                  
+                  {/* Decorative elements */}
+                  <div className="absolute top-2 right-2 w-12 h-12 rounded-full bg-gradient-to-r from-[#20E3B2]/5 to-[#8A56FF]/5 blur-xl"></div>
+                  <div className="absolute bottom-2 left-2 w-8 h-8 rounded-full bg-gradient-to-r from-[#8A56FF]/5 to-[#20E3B2]/5 blur-md"></div>
                 </div>
               </div>
             </div>
