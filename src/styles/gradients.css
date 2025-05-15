@@ -1,0 +1,25 @@
+
+/* Enhanced Gradients */
+.bg-gradient {
+  background: linear-gradient(135deg, #8a56ff 0%, #6e40e6 100%);
+}
+
+.bg-gradient-soft {
+  background: linear-gradient(135deg, rgba(138, 86, 255, 0.8) 0%, rgba(110, 64, 230, 0.9) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #8a56ff 0%, #6e40e6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(120deg, #20E3B2 0%, #0FCCCE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
