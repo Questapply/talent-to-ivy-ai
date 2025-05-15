@@ -9,43 +9,50 @@ const stages = [
     number: "01",
     icon: <Search className="h-8 w-8 text-white" />,
     title: "Find Schools",
-    description: "Discover schools that match your talents and aspirations."
+    description: "Discover schools that match your talents and aspirations.",
+    image: "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&q=80&w=1974"
   },
   {
     number: "02",
     icon: <School className="h-8 w-8 text-white" />,
     title: "Find Programs",
-    description: "Explore programs aligned with your unique strengths."
+    description: "Explore programs aligned with your unique strengths.",
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1974"
   },
   {
     number: "03",
     icon: <GraduationCap className="h-8 w-8 text-white" />,
     title: "Find Professors",
-    description: "Connect with professors in your field of interest."
+    description: "Connect with professors in your field of interest.",
+    image: "https://images.unsplash.com/photo-1581093196277-9f6070e0b9cc?auto=format&fit=crop&q=80&w=1974"
   },
   {
     number: "04",
     icon: <FileText className="h-8 w-8 text-white" />,
     title: "Create Resume",
-    description: "Build a compelling resume highlighting your talents."
+    description: "Build a compelling resume highlighting your talents.",
+    image: "https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?auto=format&fit=crop&q=80&w=1974"
   },
   {
     number: "05", 
     icon: <FileText className="h-8 w-8 text-white" />,
     title: "Create SOP",
-    description: "Craft a powerful statement of purpose that stands out."
+    description: "Craft a powerful statement of purpose that stands out.",
+    image: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=1974"
   },
   {
     number: "06",
     icon: <FileCheck className="h-8 w-8 text-white" />,
     title: "Create LOR",
-    description: "Generate impactful letters of recommendation."
+    description: "Generate impactful letters of recommendation.",
+    image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=1974"
   },
   {
     number: "07",
     icon: <Send className="h-8 w-8 text-white" />,
     title: "Apply Now",
-    description: "Submit your applications with confidence."
+    description: "Submit your applications with confidence.",
+    image: "https://images.unsplash.com/photo-1545239351-ef35f43d514b?auto=format&fit=crop&q=80&w=1974"
   }
 ];
 
@@ -101,8 +108,8 @@ const HowItWorks = () => {
           <div className="inline-block mb-3 px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/10">
             The 7-Stage Process
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white neon-text">Your Journey to Success</h2>
-          <p className="text-lg text-white/80">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white neon-text">Your Journey to Success</h2>
+          <p className="text-xl text-white/90 font-medium">
             Our AI guides you through every step of the application process, ensuring nothing is missed.
           </p>
         </div>
@@ -113,7 +120,7 @@ const HowItWorks = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-cyan-400/30 via-primary/30 to-cyan-400/30 rounded-full glow-sm"></div>
           </div>
           
-          <div className="space-y-20 md:space-y-32 relative">
+          <div className="space-y-20 md:space-y-28 relative">
             {stages.map((stage, index) => (
               <div 
                 key={index} 
@@ -135,29 +142,37 @@ const HowItWorks = () => {
                   
                   {/* Content box */}
                   <div className="flex-1 md:pl-12">
-                    <div className="card-glass p-8 rounded-2xl border border-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 group">
-                      {/* Mobile number display */}
-                      <div className="flex items-center mb-6 md:hidden">
-                        <div className="w-12 h-12 rounded-full border-2 border-cyan-400 flex items-center justify-center bg-black/50">
-                          <span className="text-xl font-bold text-white">{stage.number}</span>
-                        </div>
-                        <h3 className="text-2xl font-bold ml-4 text-white">{stage.title}</h3>
-                      </div>
-                      
-                      {/* Desktop content layout */}
-                      <div className="hidden md:block">
-                        <div className="flex items-center mb-4">
-                          <div className="bg-cyan-400/20 backdrop-blur-sm w-16 h-16 rounded-xl flex items-center justify-center shadow-lg border border-cyan-400/30 neon-glow">
-                            {stage.icon}
+                    <div className="card-glass p-0 rounded-2xl border border-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 group overflow-hidden">
+                      {/* Image background */}
+                      <div className="relative h-40 md:h-60 w-full overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black z-10"></div>
+                        <img 
+                          src={stage.image} 
+                          alt={stage.title} 
+                          className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110"
+                        />
+                        
+                        {/* Mobile number display */}
+                        <div className="absolute top-4 left-4 z-20 md:hidden">
+                          <div className="w-12 h-12 rounded-full border-2 border-cyan-400 flex items-center justify-center bg-black/70 shadow-lg shadow-cyan-400/30">
+                            <span className="text-xl font-bold text-white">{stage.number}</span>
                           </div>
-                          <h3 className="text-2xl font-bold ml-4 text-white">{stage.title}</h3>
                         </div>
-                        <p className="text-white/80 text-lg ml-[80px]">{stage.description}</p>
+                        
+                        {/* Content overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                          <div className="flex items-center mb-2">
+                            <div className="bg-cyan-400/20 backdrop-blur-sm w-14 h-14 rounded-xl flex items-center justify-center shadow-lg border border-cyan-400/30 neon-glow">
+                              {stage.icon}
+                            </div>
+                            <h3 className="text-2xl font-bold ml-4 text-white">{stage.title}</h3>
+                          </div>
+                        </div>
                       </div>
                       
-                      {/* Mobile content layout */}
-                      <div className="md:hidden">
-                        <p className="text-white/80">{stage.description}</p>
+                      {/* Description */}
+                      <div className="p-6 bg-black/80 backdrop-blur-md">
+                        <p className="text-white/90 text-lg">{stage.description}</p>
                       </div>
                       
                       {/* Glowing edge */}

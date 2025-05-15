@@ -20,23 +20,23 @@ const Hero = () => {
               Revolutionary AI for Education
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-              <span className="block mb-2">Discover Your Talents,</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-shadow-lg">
+              <span className="block mb-2 text-white">Discover Your Talents,</span>
               <span className="text-gradient-cyan">Unlock Your Future</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto lg:mx-0 font-medium">
               The first AI platform that identifies your unique talents and connects you to top universities with incredible speed and accuracy.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button size="lg" className="bg-cyan-400 hover:bg-cyan-500 text-black transition-colors relative overflow-hidden group cyan-glow">
-                <span className="relative z-10 flex items-center">
+                <span className="relative z-10 flex items-center font-medium">
                   Get Started <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></span>
               </Button>
-              <Button size="lg" variant="outline" className="border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10">
+              <Button size="lg" variant="outline" className="border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10 font-medium">
                 Watch Demo
               </Button>
             </div>
@@ -58,8 +58,8 @@ const Hero = () => {
                     AI
                   </div>
                   <div className="flex-1">
-                    <p className="font-medium text-white">AI Talent Advisor</p>
-                    <p className="text-sm text-gray-300 typing-effect">Based on your profile, I've identified your strengths in analytical thinking and creative problem-solving.</p>
+                    <p className="font-medium text-white text-shadow-sm">AI Talent Advisor</p>
+                    <p className="text-sm text-white/90 typing-effect">Based on your profile, I've identified your strengths in analytical thinking and creative problem-solving.</p>
                   </div>
                 </div>
               </div>
