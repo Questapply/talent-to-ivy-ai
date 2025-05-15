@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, Send } from 'lucide-react';
 
 const AIAssistant = () => {
   return (
@@ -13,7 +13,7 @@ const AIAssistant = () => {
               <div className="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden">
                 <div className="p-4 bg-primary text-white flex items-center gap-3">
                   <MessageSquare className="h-5 w-5" />
-                  <h3 className="font-medium">QuestApply AI Assistant</h3>
+                  <h3 className="font-medium text-lg tracking-wide">QuestApply AI Assistant</h3>
                 </div>
                 
                 <div className="p-6 max-h-[400px] overflow-y-auto space-y-4">
@@ -71,6 +71,7 @@ const AIAssistant = () => {
                       className="flex-1 px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
                     />
                     <Button className="bg-primary hover:bg-primary-dark">
+                      <Send className="h-4 w-4 mr-1" />
                       Send
                     </Button>
                   </div>
