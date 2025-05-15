@@ -31,6 +31,38 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Digital scanning effect */
+@keyframes scan {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+/* Glowing pulse for digital elements */
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(138, 86, 255, 0.5), 
+                0 0 10px rgba(138, 86, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 10px rgba(138, 86, 255, 0.7), 
+                0 0 20px rgba(138, 86, 255, 0.5), 
+                0 0 30px rgba(138, 86, 255, 0.3);
+  }
+}
+
+/* Gradient animation for background effects */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Digital data stream effect */
+@keyframes data-stream {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
 /* 3D Cube Animation */
 .scene {
   width: 300px;
@@ -92,6 +124,29 @@
   overflow: hidden;
   white-space: nowrap;
   animation: typing 3.5s steps(40, end);
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s infinite ease-in-out;
+}
+
+.animate-gradient {
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+.animate-scan {
+  background: linear-gradient(45deg, rgba(32, 227, 178, 0.1) 25%, transparent 25%, transparent 50%, rgba(32, 227, 178, 0.1) 50%, rgba(32, 227, 178, 0.1) 75%, transparent 75%, transparent);
+  background-size: 10px 10px;
+  animation: scan 2s linear infinite;
+}
+
+.data-stream {
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background-color: rgba(32, 227, 178, 0.5);
+  animation: data-stream 3s linear infinite;
 }
 
 .path-style {

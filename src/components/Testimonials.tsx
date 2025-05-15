@@ -1,5 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const testimonials = [
   {
@@ -25,13 +26,34 @@ const testimonials = [
     role: "Medicine Student",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=1974",
     content: "QuestApply helped me identify my strengths in research and patient care, then matched me with medical schools that aligned with these skills. The personalized guidance throughout the application process was invaluable."
+  },
+  {
+    name: "Jason Wu",
+    role: "Engineering Graduate",
+    image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=1974",
+    content: "The personalized university matching algorithm found programs I hadn't even considered but that aligned perfectly with my career goals. I'm now attending my top-choice engineering school thanks to QuestApply."
+  },
+  {
+    name: "Aisha Patel",
+    role: "Law School Applicant",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1974",
+    content: "QuestApply's AI assistant helped me craft a compelling personal statement that highlighted my unique experiences. The detailed guidance through each step of the application process was beyond valuable."
   }
 ];
 
+// Split testimonials into columns for the staggered effect
+const firstColumnTestimonials = [testimonials[0], testimonials[3], testimonials[5]];
+const secondColumnTestimonials = [testimonials[1], testimonials[4]];
+const thirdColumnTestimonials = [testimonials[2]];
+
 const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = React.useRef<HTMLDivElement>(null);
-
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const firstColumnRef = useRef<HTMLDivElement>(null);
+  const thirdColumnRef = useRef<HTMLDivElement>(null);
+  const secondColumnRef = useRef<HTMLDivElement>(null);
+  
+  // Scroll animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -52,6 +74,84 @@ const Testimonials = () => {
       }
     };
   }, []);
+  
+  // Scroll animation for columns
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const scrollOptions = {
+      top: 0,
+      left: 0,
+      behavior: 'smooth' as ScrollBehavior
+    };
+
+    // Scroll first and third columns up (negative values)
+    const scrollFirstColumn = () => {
+      if (firstColumnRef.current) {
+        const scrollDistance = firstColumnRef.current.scrollHeight - firstColumnRef.current.clientHeight;
+        firstColumnRef.current.scrollTo({
+          ...scrollOptions,
+          top: scrollDistance
+        });
+      }
+      
+      if (thirdColumnRef.current) {
+        const scrollDistance = thirdColumnRef.current.scrollHeight - thirdColumnRef.current.clientHeight;
+        thirdColumnRef.current.scrollTo({
+          ...scrollOptions,
+          top: scrollDistance
+        });
+      }
+    };
+    
+    // Scroll second column down (positive values)
+    const scrollSecondColumn = () => {
+      if (secondColumnRef.current) {
+        secondColumnRef.current.scrollTo({
+          ...scrollOptions,
+          top: 0
+        });
+      }
+    };
+    
+    // Initial delay to let the columns render properly
+    const timeoutId = setTimeout(() => {
+      scrollFirstColumn();
+      scrollSecondColumn();
+      
+      // Set up alternating scroll direction for continuous animation
+      const intervalId = setInterval(() => {
+        if (firstColumnRef.current && firstColumnRef.current.scrollTop > 0) {
+          firstColumnRef.current.scrollTo({
+            ...scrollOptions,
+            top: 0
+          });
+          
+          if (thirdColumnRef.current) {
+            thirdColumnRef.current.scrollTo({
+              ...scrollOptions,
+              top: 0
+            });
+          }
+          
+          if (secondColumnRef.current) {
+            const scrollDistance = secondColumnRef.current.scrollHeight - secondColumnRef.current.clientHeight;
+            secondColumnRef.current.scrollTo({
+              ...scrollOptions,
+              top: scrollDistance
+            });
+          }
+        } else {
+          scrollFirstColumn();
+          scrollSecondColumn();
+        }
+      }, 10000); // Change direction every 10 seconds
+      
+      return () => clearInterval(intervalId);
+    }, 1000);
+    
+    return () => clearTimeout(timeoutId);
+  }, [isVisible]);
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden bg-black">
@@ -63,56 +163,73 @@ const Testimonials = () => {
       <div className="container px-4 mx-auto relative z-10" ref={sectionRef}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block mb-3 px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium">
-            Student Stories
+            <span className="text-glow-primary">Student Stories</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white neon-text">Success Stories</h2>
-          <p className="text-xl text-white/90 font-medium">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white neon-text text-shadow-lg">Success Stories</h2>
+          <p className="text-xl text-white/90 font-medium text-shadow-sm">
             Don't just take our word for it. Hear from students who transformed their university application journey with QuestApply.
           </p>
         </div>
         
-        {/* Staggered testimonials grid inspired by Cursor.com */}
+        {/* Staggered testimonials grid with scrolling effect inspired by Cursor.com */}
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          {/* First column - top aligned */}
-          <div className="space-y-8">
-            <TestimonialCard 
-              testimonial={testimonials[0]}
-              isVisible={isVisible}
-              delay={0}
-            />
-            {testimonials[3] && (
-              <TestimonialCard 
-                testimonial={testimonials[3]}
-                isVisible={isVisible}
-                delay={0.6}
-              />
-            )}
-          </div>
+          {/* First column - scrolls up */}
+          <ScrollArea 
+            className="h-[600px] md:h-[700px] overflow-hidden"
+            ref={firstColumnRef}
+          >
+            <div className="space-y-8 pr-4">
+              {firstColumnTestimonials.map((testimonial, idx) => (
+                <TestimonialCard 
+                  key={`first-${idx}`}
+                  testimonial={testimonial}
+                  isVisible={isVisible}
+                  delay={idx * 0.2}
+                />
+              ))}
+            </div>
+          </ScrollArea>
           
-          {/* Second column - bottom aligned with margin-top */}
-          <div className="space-y-8 md:mt-32">
-            <TestimonialCard 
-              testimonial={testimonials[1]}
-              isVisible={isVisible}
-              delay={0.3}
-            />
-          </div>
+          {/* Second column - scrolls down */}
+          <ScrollArea 
+            className="h-[600px] md:h-[700px] overflow-hidden md:mt-32"
+            ref={secondColumnRef}
+          >
+            <div className="space-y-8 pr-4">
+              {secondColumnTestimonials.map((testimonial, idx) => (
+                <TestimonialCard 
+                  key={`second-${idx}`}
+                  testimonial={testimonial}
+                  isVisible={isVisible}
+                  delay={idx * 0.2 + 0.3}
+                />
+              ))}
+            </div>
+          </ScrollArea>
           
-          {/* Third column - top aligned */}
-          <div className="space-y-8">
-            <TestimonialCard 
-              testimonial={testimonials[2]}
-              isVisible={isVisible}
-              delay={0.4}
-            />
-          </div>
+          {/* Third column - scrolls up */}
+          <ScrollArea 
+            className="h-[600px] md:h-[700px] overflow-hidden"
+            ref={thirdColumnRef}
+          >
+            <div className="space-y-8 pr-4">
+              {thirdColumnTestimonials.map((testimonial, idx) => (
+                <TestimonialCard 
+                  key={`third-${idx}`}
+                  testimonial={testimonial}
+                  isVisible={isVisible}
+                  delay={idx * 0.2 + 0.4}
+                />
+              ))}
+            </div>
+          </ScrollArea>
         </div>
       </div>
     </section>
   );
 };
 
-// Testimonial card component
+// Testimonial card component with improved text clarity
 const TestimonialCard = ({ 
   testimonial, 
   isVisible, 
@@ -132,7 +249,7 @@ const TestimonialCard = ({
       style={{ transitionDelay: `${delay}s` }}
     >
       <div className="mb-6">
-        <p className="text-white text-lg leading-relaxed font-medium">"{testimonial.content}"</p>
+        <p className="text-white text-lg leading-relaxed font-medium text-shadow-sm">"{testimonial.content}"</p>
       </div>
       
       <div className="mt-auto flex items-center">
@@ -144,7 +261,7 @@ const TestimonialCard = ({
           />
         </div>
         <div>
-          <h4 className="text-white font-semibold">{testimonial.name}</h4>
+          <h4 className="text-white font-semibold text-shadow-sm">{testimonial.name}</h4>
           <p className="text-cyan-400 text-sm">{testimonial.role}</p>
         </div>
       </div>

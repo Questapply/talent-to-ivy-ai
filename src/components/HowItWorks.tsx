@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { 
   Search, School, GraduationCap, FileText, FileCheck, Send, User
 } from 'lucide-react';
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const stages = [
   {
@@ -106,87 +107,103 @@ const HowItWorks = () => {
       <div className="container px-4 mx-auto relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block mb-3 px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/10">
-            The 7-Stage Process
+            <span className="text-glow-white">The 7-Stage Process</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white neon-text">Your Journey to Success</h2>
-          <p className="text-xl text-white/90 font-medium">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white neon-text text-shadow-lg">
+            Your Journey to Success
+          </h2>
+          <p className="text-xl text-white/90 font-medium text-shadow-sm">
             Our AI guides you through every step of the application process, ensuring nothing is missed.
           </p>
         </div>
         
+        {/* Digital timeline inspired by Uplinq */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Vertical timeline with glowing connections */}
-          <div className="hidden md:block absolute left-[75px] top-0 bottom-0 w-1">
-            <div className="absolute inset-0 bg-gradient-to-b from-cyan-400/30 via-primary/30 to-cyan-400/30 rounded-full glow-sm"></div>
-          </div>
+          <div className="hidden lg:block absolute left-1/2 top-10 bottom-10 w-1 bg-gradient-to-b from-cyan-400/30 via-primary/30 to-cyan-400/30 rounded-full glow-sm -translate-x-1/2"></div>
           
-          <div className="space-y-20 md:space-y-28 relative">
+          <div className="space-y-32">
             {stages.map((stage, index) => (
               <div 
                 key={index} 
                 ref={el => stageRefs.current[index] = el}
-                className="reveal"
+                className={`reveal flex ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-16`}
                 style={{ transitionDelay: `${index * 0.15}s` }}
               >
-                <div className="flex items-start">
-                  {/* Number circle with glow effect */}
-                  <div className="hidden md:flex relative">
-                    <div className="w-[150px] h-[150px] rounded-full border-2 border-cyan-400/40 flex items-center justify-center z-10 bg-black">
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-cyan-400/20 blur-md"></div>
-                      <div className="text-5xl font-bold text-white relative z-10">{stage.number}</div>
-                    </div>
+                {/* Digital screen */}
+                <div className="w-full lg:w-1/2">
+                  <div className="relative rounded-2xl overflow-hidden border-2 border-cyan-400/30 shadow-lg shadow-primary/20 group">
+                    {/* Screen glow effects */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-black to-gray-900"></div>
+                    <div className="absolute inset-0 opacity-20 bg-[linear-gradient(40deg,transparent,rgba(32,227,178,0.3),transparent,rgba(138,86,255,0.3),transparent)] bg-[length:200%_200%] animate-[gradient_8s_ease_infinite]"></div>
                     
-                    {/* Glowing dot on timeline */}
-                    <div className="absolute left-[75px] top-[75px] -ml-2 w-4 h-4 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50 z-20"></div>
-                  </div>
-                  
-                  {/* Content box */}
-                  <div className="flex-1 md:pl-12">
-                    <div className="card-glass p-0 rounded-2xl border border-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 group overflow-hidden">
-                      {/* Image background */}
-                      <div className="relative h-40 md:h-60 w-full overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black z-10"></div>
-                        <img 
-                          src={stage.image} 
-                          alt={stage.title} 
-                          className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110"
-                        />
-                        
-                        {/* Mobile number display */}
-                        <div className="absolute top-4 left-4 z-20 md:hidden">
-                          <div className="w-12 h-12 rounded-full border-2 border-cyan-400 flex items-center justify-center bg-black/70 shadow-lg shadow-cyan-400/30">
-                            <span className="text-xl font-bold text-white">{stage.number}</span>
-                          </div>
+                    {/* Content */}
+                    <div className="relative p-6 md:p-8">
+                      {/* Header with number */}
+                      <div className="flex items-center mb-4 gap-4">
+                        <div className="w-16 h-16 rounded-full border-2 border-cyan-400/50 flex items-center justify-center bg-black/70 shadow-lg shadow-cyan-400/20">
+                          <span className="text-2xl font-bold text-cyan-400 text-glow-cyan">{stage.number}</span>
                         </div>
-                        
-                        {/* Content overlay */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                          <div className="flex items-center mb-2">
-                            <div className="bg-cyan-400/20 backdrop-blur-sm w-14 h-14 rounded-xl flex items-center justify-center shadow-lg border border-cyan-400/30 neon-glow">
+                        <h3 className="text-2xl md:text-3xl font-bold text-white text-shadow-md">{stage.title}</h3>
+                      </div>
+                      
+                      {/* Digital content area */}
+                      <div className="mt-4">
+                        <div className="bg-black/50 border border-white/10 rounded-lg p-4 backdrop-blur-sm">
+                          <div className="flex items-start gap-3">
+                            <div className="mt-1 bg-cyan-400/20 backdrop-blur-sm w-10 h-10 rounded-lg flex items-center justify-center border border-cyan-400/30">
                               {stage.icon}
                             </div>
-                            <h3 className="text-2xl font-bold ml-4 text-white">{stage.title}</h3>
+                            <div>
+                              <p className="text-lg text-white/90 text-shadow-sm">{stage.description}</p>
+                              
+                              {/* Interface elements */}
+                              <div className="mt-4 flex items-center gap-2">
+                                <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                                  <div className="h-full w-3/4 bg-gradient-to-r from-primary to-cyan-400 rounded-full"></div>
+                                </div>
+                                <span className="text-xs text-cyan-400">75%</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                       
-                      {/* Description */}
-                      <div className="p-6 bg-black/80 backdrop-blur-md">
-                        <p className="text-white/90 text-lg">{stage.description}</p>
+                      {/* Digital interface elements */}
+                      <div className="mt-4 grid grid-cols-2 gap-3">
+                        <div className="h-24 bg-gradient-to-br from-black/80 to-gray-900/80 border border-white/10 rounded-lg p-3 flex flex-col justify-between">
+                          <div className="text-xs text-white/50">Application Status</div>
+                          <div className="text-cyan-400 font-medium">In Progress</div>
+                          <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                            <div className="h-full w-2/3 bg-gradient-to-r from-primary to-cyan-400 rounded-full"></div>
+                          </div>
+                        </div>
+                        <div className="h-24 bg-gradient-to-br from-black/80 to-gray-900/80 border border-white/10 rounded-lg p-3 flex flex-col justify-between">
+                          <div className="text-xs text-white/50">AI Assistance</div>
+                          <div className="flex items-center gap-1">
+                            <span className="relative flex h-2 w-2">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                            </span>
+                            <span className="text-cyan-400 font-medium">Active</span>
+                          </div>
+                          <div className="text-xs text-white/50">24/7 Support Available</div>
+                        </div>
                       </div>
                       
-                      {/* Glowing edge */}
-                      <div className="absolute inset-0 rounded-2xl border border-cyan-400/0 group-hover:border-cyan-400/50 transition-all duration-500 pointer-events-none"></div>
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 to-cyan-400/50 rounded-b-xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                      {/* Glowing bottom border */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/80 to-cyan-400/80"></div>
                     </div>
                   </div>
                 </div>
+                
+                {/* Center dot for timeline */}
+                <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50 border-4 border-black"></div>
               </div>
             ))}
           </div>
         </div>
         
-        {/* 3D rotating cube visualization - represents the AI processing */}
+        {/* 3D rotating cube visualization */}
         <div className="mt-24 flex justify-center">
           <div className="w-full max-w-xl aspect-square relative">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-cyan-400/30 blur-3xl rounded-full opacity-50"></div>
@@ -197,7 +214,7 @@ const HowItWorks = () => {
                     <div className="flex items-center justify-center h-full bg-black/60 backdrop-blur-sm border border-white/10">
                       <div className="text-white text-center p-4">
                         <User className="h-12 w-12 text-cyan-400 mx-auto mb-3" />
-                        <div className="text-xl font-bold">Talent Profile</div>
+                        <div className="text-xl font-bold text-shadow-md">Talent Profile</div>
                       </div>
                     </div>
                   </div>
@@ -205,7 +222,7 @@ const HowItWorks = () => {
                     <div className="flex items-center justify-center h-full bg-black/60 backdrop-blur-sm border border-white/10">
                       <div className="text-white text-center p-4">
                         <School className="h-12 w-12 text-primary mx-auto mb-3" />
-                        <div className="text-xl font-bold">University Match</div>
+                        <div className="text-xl font-bold text-shadow-md">University Match</div>
                       </div>
                     </div>
                   </div>
@@ -213,7 +230,7 @@ const HowItWorks = () => {
                     <div className="flex items-center justify-center h-full bg-black/60 backdrop-blur-sm border border-white/10">
                       <div className="text-white text-center p-4">
                         <FileText className="h-12 w-12 text-cyan-400 mx-auto mb-3" />
-                        <div className="text-xl font-bold">Documents</div>
+                        <div className="text-xl font-bold text-shadow-md">Documents</div>
                       </div>
                     </div>
                   </div>
@@ -221,7 +238,7 @@ const HowItWorks = () => {
                     <div className="flex items-center justify-center h-full bg-black/60 backdrop-blur-sm border border-white/10">
                       <div className="text-white text-center p-4">
                         <GraduationCap className="h-12 w-12 text-primary mx-auto mb-3" />
-                        <div className="text-xl font-bold">Admission</div>
+                        <div className="text-xl font-bold text-shadow-md">Admission</div>
                       </div>
                     </div>
                   </div>
@@ -229,7 +246,7 @@ const HowItWorks = () => {
                     <div className="flex items-center justify-center h-full bg-black/60 backdrop-blur-sm border border-white/10">
                       <div className="text-white text-center p-4">
                         <Search className="h-12 w-12 text-cyan-400 mx-auto mb-3" />
-                        <div className="text-xl font-bold">Discover</div>
+                        <div className="text-xl font-bold text-shadow-md">Discover</div>
                       </div>
                     </div>
                   </div>
@@ -237,7 +254,7 @@ const HowItWorks = () => {
                     <div className="flex items-center justify-center h-full bg-black/60 backdrop-blur-sm border border-white/10">
                       <div className="text-white text-center p-4">
                         <Send className="h-12 w-12 text-primary mx-auto mb-3" />
-                        <div className="text-xl font-bold">Apply</div>
+                        <div className="text-xl font-bold text-shadow-md">Apply</div>
                       </div>
                     </div>
                   </div>

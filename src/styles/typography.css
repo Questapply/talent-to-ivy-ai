@@ -1,25 +1,90 @@
 
 /* Text clarity improvements */
 .text-shadow-sm {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .text-shadow-md {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
 }
 
 .text-shadow-lg {
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
 }
 
 .text-glow-white {
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 
+               0 0 10px rgba(255, 255, 255, 0.5),
+               0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 .text-glow-primary {
-  text-shadow: 0 0 5px rgba(138, 86, 255, 0.5), 0 0 10px rgba(138, 86, 255, 0.3);
+  text-shadow: 0 0 5px rgba(138, 86, 255, 0.7), 
+               0 0 10px rgba(138, 86, 255, 0.5),
+               0 0 15px rgba(138, 86, 255, 0.3);
 }
 
 .text-glow-cyan {
-  text-shadow: 0 0 5px rgba(32, 227, 178, 0.5), 0 0 10px rgba(32, 227, 178, 0.3);
+  text-shadow: 0 0 5px rgba(32, 227, 178, 0.7), 
+               0 0 10px rgba(32, 227, 178, 0.5),
+               0 0 15px rgba(32, 227, 178, 0.3);
+}
+
+/* Enhanced readability classes */
+.readable-text {
+  letter-spacing: 0.015em;
+  word-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+.heading-clarity {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Text gradients */
+.text-gradient-primary {
+  background: linear-gradient(135deg, rgba(138, 86, 255, 1) 0%, rgba(163, 120, 252, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, rgba(32, 227, 178, 1) 0%, rgba(45, 206, 215, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Digital display text */
+.digital-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Enhance focus for important elements */
+.focus-text {
+  position: relative;
+  display: inline-block;
+}
+
+.focus-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(138, 86, 255, 0.7), rgba(32, 227, 178, 0.7));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.focus-text:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
