@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import Logo from './Logo';
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -57,8 +58,7 @@ const Hero = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-shadow-lg">
-              <span className="text-white">Discover Your Talents, </span>
-              <span className="text-gradient-cyan">Unlock Your Future</span>
+              <span className="text-white">Discover Your Talents, Unlock Your Future</span>
             </h1>
             
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
@@ -80,17 +80,17 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Enhanced visual area showing a complete image without text overlay */}
+          {/* Updated visual area showing the complete image without text overlay */}
           <div className="flex-1 relative reveal" style={{animationDelay: "0.3s"}}>
             <div className="relative w-full h-[420px] md:h-[500px] rounded-2xl overflow-hidden animate-float shadow-[0_0_40px_rgba(32,227,178,0.35)] card-glow">
-              {/* Using the image of students with a teacher */}
+              {/* Updated image with students and teacher - using the uploaded image */}
               <img 
-                src="/lovable-uploads/36c235b4-facc-46f0-8ab2-33b4cd669f30.png" 
+                src="/lovable-uploads/51903c37-f0ce-4390-9e4d-d1e41d6971b4.png" 
                 alt="Students with teacher" 
                 className="w-full h-full object-cover rounded-2xl"
               />
               
-              {/* AI Badge */}
+              {/* AI Badge moved to top right corner so it doesn't overlap with content */}
               <div className="absolute top-4 right-4 glass-effect px-3 py-2 rounded-full shadow-lg flex items-center gap-2 animate-float backdrop-blur-md border border-cyan-400/20" style={{animationDelay: "1s"}}>
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
                 <span className="text-xs font-medium text-cyan-300">AI Powered</span>
