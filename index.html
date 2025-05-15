@@ -6,10 +6,523 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Talent to Ivy AI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   </head>
   <body>
-    <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="root">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="container">
+          <div class="logo">
+            <div class="logo-icon">
+              <div class="logo-gradient"></div>
+              <div class="logo-inner">T</div>
+            </div>
+            <span class="logo-text">Talent<span class="logo-highlight">AI</span></span>
+          </div>
+          
+          <div class="desktop-menu">
+            <a href="#features" class="menu-item">Features</a>
+            <a href="#howitworks" class="menu-item">How It Works</a>
+            <a href="#testimonials" class="menu-item">Testimonials</a>
+            <a href="#universities" class="menu-item">Universities</a>
+          </div>
+          
+          <div class="desktop-auth">
+            <button class="btn btn-outline">Log In</button>
+            <button class="btn btn-gradient">Get Started</button>
+          </div>
+          
+          <button class="mobile-menu-button">
+            <span class="menu-icon"></span>
+          </button>
+        </div>
+        
+        <div class="mobile-menu">
+          <div class="container mobile-menu-container">
+            <a href="#features" class="menu-item">Features</a>
+            <a href="#howitworks" class="menu-item">How It Works</a>
+            <a href="#testimonials" class="menu-item">Testimonials</a>
+            <a href="#universities" class="menu-item">Universities</a>
+            <div class="mobile-auth">
+              <button class="btn btn-outline btn-full">Log In</button>
+              <button class="btn btn-gradient btn-full">Get Started</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">Discover Your Talents and Connect with Top Universities</h1>
+            <p class="hero-subtitle">Our AI-powered platform analyzes your unique skills and matches you with the perfect educational opportunities worldwide.</p>
+            <div class="hero-cta">
+              <button class="btn btn-gradient btn-lg">Start Your Journey</button>
+              <button class="btn btn-outline btn-lg">Learn More</button>
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">Admission Success</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">University Partners</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">50K+</span>
+                <span class="stat-label">Students Matched</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="image-container">
+              <img src="/images/hero-image.png" alt="Student using AI platform" />
+            </div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="features">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Key Features</span>
+            <h2 class="section-title">Unlock Your Potential with AI-Powered Tools</h2>
+            <p class="section-subtitle">Our platform combines advanced AI technology with educational expertise to help you discover and showcase your unique talents.</p>
+          </div>
+          
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon ai-icon"></div>
+              <h3>AI Talent Assessment</h3>
+              <p>Our advanced AI algorithms analyze your skills, interests, and achievements to identify your unique strengths and potential.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon match-icon"></div>
+              <h3>University Matching</h3>
+              <p>Get personalized recommendations for universities and programs that align with your talents and academic goals.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon app-icon"></div>
+              <h3>Application Assistance</h3>
+              <p>Receive guided support throughout the application process, with AI-powered insights to improve your chances of success.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon global-icon"></div>
+              <h3>Global Opportunities</h3>
+              <p>Explore educational opportunities worldwide, with insights into different countries, cultures, and academic systems.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section id="howitworks" class="how-it-works">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Simple Process</span>
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Our streamlined process takes you from talent discovery to university acceptance in just a few steps.</p>
+          </div>
+          
+          <div class="steps-container">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Complete Your Profile</h3>
+                <p>Input your academic history, extracurricular activities, interests, and aspirations to create your comprehensive profile.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>AI Talent Analysis</h3>
+                <p>Our AI evaluates your profile to identify your unique talents, strengths, and potential for different academic fields.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>University Matching</h3>
+                <p>Receive personalized recommendations for universities and programs that match your talents and academic goals.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>Application Support</h3>
+                <p>Get AI-powered assistance with your applications, including essays, recommendation letters, and interview preparation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Talent Discovery Section -->
+      <section class="talent-discovery">
+        <div class="background-image"></div>
+        <div class="gradient-overlay gradient-top"></div>
+        <div class="gradient-overlay gradient-bottom"></div>
+        
+        <div class="container">
+          <div class="talent-grid">
+            <div class="talent-content reveal">
+              <span class="section-tag">AI-Powered Analysis</span>
+              <h2 class="section-title">Discover Your Hidden Talents with AI</h2>
+              <p class="section-text">
+                Our advanced AI algorithms analyze your skills, interests, and achievements to identify your unique talents and potential. 
+                Go beyond traditional assessments and discover what makes you special.
+              </p>
+              <ul class="talent-list">
+                <li>Personalized talent assessments</li>
+                <li>Skills and personality analysis</li>
+                <li>Career path recommendations</li>
+                <li>Strengths and growth opportunities</li>
+              </ul>
+              <button class="btn btn-gradient">Discover Your Talents</button>
+            </div>
+            <div class="talent-demo reveal">
+              <div class="talent-card">
+                <div class="card-header">
+                  <h3>AI Talent Assessment</h3>
+                  <div class="card-controls">
+                    <span class="control red"></span>
+                    <span class="control yellow"></span>
+                    <span class="control green"></span>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="skill-bar">
+                    <div class="skill-info">
+                      <span>Analytical Thinking</span>
+                      <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress" style="width: 85%"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-info">
+                      <span>Creative Problem Solving</span>
+                      <span>72%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress" style="width: 72%"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-info">
+                      <span>Communication Skills</span>
+                      <span>68%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress" style="width: 68%"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-info">
+                      <span>Leadership Potential</span>
+                      <span>79%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress" style="width: 79%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="ai-message">
+                    <div class="ai-avatar">AI</div>
+                    <div class="message">
+                      Based on your assessment, you show exceptional talent in analytical thinking and leadership. These skills are highly sought after in fields like Data Science and Business Analytics.
+                    </div>
+                  </div>
+                  <button class="btn btn-gradient btn-full">View Full Assessment</button>
+                </div>
+                <div class="live-badge">Live Analysis</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Assistant Section -->
+      <section class="ai-assistant">
+        <div class="container">
+          <div class="assistant-grid">
+            <div class="assistant-demo reveal">
+              <div class="chat-window">
+                <div class="chat-header">
+                  <div class="chat-icon"></div>
+                  <h3>QuestApply AI Assistant</h3>
+                </div>
+                <div class="chat-messages">
+                  <div class="user-message">
+                    <div class="message">Hi, I need help finding universities for computer science programs.</div>
+                  </div>
+                  <div class="ai-message">
+                    <div class="ai-avatar">AI</div>
+                    <div class="message">Hello! I'd be happy to help you find computer science programs. Could you tell me a bit about your interests within computer science? Are you more interested in artificial intelligence, software engineering, cybersecurity, or another area?</div>
+                  </div>
+                  <div class="user-message">
+                    <div class="message">I'm interested in artificial intelligence and machine learning.</div>
+                  </div>
+                  <div class="ai-message">
+                    <div class="ai-avatar">AI</div>
+                    <div class="message">Great choice! Based on your interest in AI and machine learning, I'd recommend looking into programs at MIT, Stanford, Carnegie Mellon, UC Berkeley, and University of Toronto. Would you like me to analyze your profile to provide more personalized recommendations?</div>
+                  </div>
+                  <div class="user-message">
+                    <div class="message">Yes, that would be helpful!</div>
+                  </div>
+                  <div class="ai-message">
+                    <div class="ai-avatar">AI</div>
+                    <div class="message typing">Let me analyze your profile and find the perfect match for your talents and goals...</div>
+                  </div>
+                </div>
+                <div class="chat-input">
+                  <input type="text" placeholder="Ask anything about admissions..." />
+                  <button class="send-button">Send</button>
+                </div>
+              </div>
+            </div>
+            <div class="assistant-content reveal">
+              <h2 class="section-title">Your Personal AI Admission Guide</h2>
+              <p class="section-text">
+                Have questions about universities, programs, or application requirements? Our AI assistant is available 24/7 to provide instant, accurate answers and personalized guidance.
+              </p>
+              <ul class="assistant-features">
+                <li>Get instant answers to admissions questions</li>
+                <li>Receive personalized university recommendations</li>
+                <li>Understand application requirements</li>
+                <li>Access tips for successful applications</li>
+              </ul>
+              <button class="btn btn-gradient">Chat with AI Assistant</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Universities Section -->
+      <section id="universities" class="universities">
+        <div class="container">
+          <div class="section-header">
+            <h3>Connecting you with top universities worldwide</h3>
+          </div>
+          <div class="universities-slider">
+            <div class="universities-track">
+              <!-- Universities will be duplicated by JS for continuous scrolling -->
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2017/02/Harvard-Logo.png" alt="Harvard University" />
+                </div>
+                <p>Harvard University</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2017/02/Stanford-Logo.png" alt="Stanford University" />
+                </div>
+                <p>Stanford University</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2017/02/MIT-Logo.png" alt="MIT" />
+                </div>
+                <p>MIT</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2022/07/UC-Berkeley-Logo.png" alt="UC Berkeley" />
+                </div>
+                <p>UC Berkeley</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2018/03/Princeton-Logo-1.png" alt="Princeton University" />
+                </div>
+                <p>Princeton University</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2018/02/University-of-Toronto-Logo.png" alt="University of Toronto" />
+                </div>
+                <p>University of Toronto</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2017/03/Oxford-Logo.png" alt="Oxford University" />
+                </div>
+                <p>Oxford University</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2017/02/Cambridge-Logo.png" alt="Cambridge University" />
+                </div>
+                <p>Cambridge University</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2017/02/Yale-Logo.png" alt="Yale University" />
+                </div>
+                <p>Yale University</p>
+              </div>
+              <div class="university">
+                <div class="university-logo">
+                  <img src="https://1000logos.net/wp-content/uploads/2017/02/Columbia-University-Logo.png" alt="Columbia University" />
+                </div>
+                <p>Columbia University</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Success Stories</span>
+            <h2 class="section-title">What Our Students Say</h2>
+            <p class="section-subtitle">Hear from students who found their perfect university match through our platform.</p>
+          </div>
+          
+          <div class="testimonials-slider">
+            <div class="testimonial-controls">
+              <button class="testimonial-prev">←</button>
+              <button class="testimonial-next">→</button>
+            </div>
+            <div class="testimonials-container">
+              <div class="testimonial">
+                <div class="testimonial-content">
+                  <div class="quote-icon">"</div>
+                  <p class="testimonial-text">QuestApply helped me discover my strength in data analysis, which I hadn't even considered before. Now I'm studying Data Science at MIT and loving every minute of it!</p>
+                  <div class="testimonial-author">
+                    <img src="/images/testimonial1.jpg" alt="Sarah J." class="author-image" />
+                    <div class="author-info">
+                      <h4>Sarah J.</h4>
+                      <p>MIT, Data Science</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial">
+                <div class="testimonial-content">
+                  <div class="quote-icon">"</div>
+                  <p class="testimonial-text">The AI assessment accurately identified my creative problem-solving skills and matched me with programs that allow me to combine technology and design. Stanford was the perfect fit!</p>
+                  <div class="testimonial-author">
+                    <img src="/images/testimonial2.jpg" alt="Michael T." class="author-image" />
+                    <div class="author-info">
+                      <h4>Michael T.</h4>
+                      <p>Stanford, Computer Science & Design</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial">
+                <div class="testimonial-content">
+                  <div class="quote-icon">"</div>
+                  <p class="testimonial-text">As an international student, I was overwhelmed by the application process. QuestApply made it simple and guided me to universities where my skills would be valued. Now I'm at Oxford!</p>
+                  <div class="testimonial-author">
+                    <img src="/images/testimonial3.jpg" alt="Aisha K." class="author-image" />
+                    <div class="author-info">
+                      <h4>Aisha K.</h4>
+                      <p>Oxford, International Relations</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta">
+        <div class="cta-gradients">
+          <div class="gradient gradient-1"></div>
+          <div class="gradient gradient-2"></div>
+        </div>
+        <div class="container">
+          <div class="cta-card reveal">
+            <div class="cta-tag">Get Started Today</div>
+            <h2 class="cta-title">Ready to Transform Your <span class="gradient-text">University Journey?</span></h2>
+            <p class="cta-text">Join thousands of students who discovered their talents and got accepted to their dream universities with QuestApply.</p>
+            <div class="cta-buttons">
+              <button class="btn btn-white">Get Started Now</button>
+              <button class="btn btn-outline-light">Watch Demo</button>
+            </div>
+            <div class="decorative-dot dot-1"></div>
+            <div class="decorative-dot dot-2"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-company">
+              <h3>QuestApply</h3>
+              <p>Discover your talents and connect with top universities through our AI-powered platform.</p>
+            </div>
+            
+            <div class="footer-links">
+              <h4>Platform</h4>
+              <ul>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">Pricing</a></li>
+              </ul>
+            </div>
+            
+            <div class="footer-links">
+              <h4>Resources</h4>
+              <ul>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">University Guide</a></li>
+                <li><a href="#">Application Tips</a></li>
+                <li><a href="#">Success Stories</a></li>
+              </ul>
+            </div>
+            
+            <div class="footer-links">
+              <h4>Contact</h4>
+              <ul>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Chat with AI</a></li>
+                <li><a href="#">Partnerships</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="footer-bottom">
+            <p>© <span id="current-year">2023</span> QuestApply. All rights reserved.</p>
+            <div class="footer-legal">
+              <a href="#">Terms</a>
+              <a href="#">Privacy</a>
+              <a href="#">Cookies</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Custom Cursor -->
+      <div id="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+        <div class="cursor-ring-outer"></div>
+      </div>
+
+      <!-- Stars Container -->
+      <div id="stars-container"></div>
+    </div>
+
+    <script src="/js/main.js"></script>
   </body>
 </html>
