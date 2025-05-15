@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Orbit Country Flags</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0e15;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+
+        /* Container for the entire animation */
+        .orbit-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        /* Large dotted circle border */
+        .orbit-circle {
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border: 2px dashed rgba(32, 227, 178, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+        }
+
+        /* Center icon */
+        .center-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(32, 227, 178, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .center-icon svg {
+            width: 24px;
+            height: 24px;
+            color: rgb(32, 227, 178);
+        }
+
+        /* Country flag */
+        .country-flag {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        .country-flag img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Circular orbit animation */
+        @keyframes circular-orbit {
+            0% {
+                transform: rotate(0deg) translateX(120px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(120px) rotate(-360deg);
+            }
+        }
+        
+        /* Background gradient */
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 14, 21, 0.95) 0%, rgba(15, 19, 26, 0.95) 100%);
+            z-index: -1;
+        }
+
+        /* Info text */
+        .info-text {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(32, 227, 178, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-gradient"></div>
+    
+    <div class="orbit-container">
+        <!-- Dotted circle orbit path -->
+        <div class="orbit-circle"></div>
+        
+        <!-- Center icon -->
+        <div class="center-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+        </div>
+        
+        <!-- Country flags will be added here by JavaScript -->
+
+        <div class="info-text">Explore universities worldwide</div>
+    </div>
+
+    <script>
+        // Country data with flag URLs
+        const countries = [
+            { 
+                name: 'USA', 
+                flag: 'https://flagcdn.com/w80/us.png' 
+            },
+            { 
+                name: 'UK', 
+                flag: 'https://flagcdn.com/w80/gb.png' 
+            },
+            { 
+                name: 'Canada', 
+                flag: 'https://flagcdn.com/w80/ca.png' 
+            },
+            { 
+                name: 'Australia', 
+                flag: 'https://flagcdn.com/w80/au.png' 
+            },
+            { 
+                name: 'Germany', 
+                flag: 'https://flagcdn.com/w80/de.png' 
+            },
+            { 
+                name: 'Japan', 
+                flag: 'https://flagcdn.com/w80/jp.png'
+            },
+        ];
+
+        // Create and add country flags to the orbit
+        function createCountryFlags() {
+            const container = document.querySelector('.orbit-container');
+            
+            countries.forEach((country, index) => {
+                // Create flag element
+                const flagElement = document.createElement('div');
+                flagElement.className = 'country-flag';
+                
+                // Create image element
+                const imgElement = document.createElement('img');
+                imgElement.src = country.flag;
+                imgElement.alt = `${country.name} Flag`;
+                
+                // Append image to flag container
+                flagElement.appendChild(imgElement);
+                
+                // Add to main container
+                container.appendChild(flagElement);
+                
+                // Apply animation with delay based on index
+                flagElement.style.animation = `circular-orbit 20s linear infinite`;
+                flagElement.style.animationDelay = `-${index * (20 / countries.length)}s`;
+            });
+        }
+
+        // Initialize the animation
+        document.addEventListener('DOMContentLoaded', () => {
+            createCountryFlags();
+        });
+    </script>
+</body>
+</html>
