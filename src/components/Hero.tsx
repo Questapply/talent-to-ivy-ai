@@ -83,9 +83,9 @@ const Hero = () => {
           {/* Updated visual area with better image and stats directly on the image */}
           <div className="flex-1 relative reveal" style={{animationDelay: "0.3s"}}>
             <div className="relative w-full h-[420px] md:h-[500px] rounded-2xl overflow-hidden animate-float shadow-[0_0_40px_rgba(32,227,178,0.35)] card-glow">
-              {/* Using higher quality image of students */}
+              {/* Using a new high-quality image showing full person */}
               <img 
-                src="/lovable-uploads/0937f4c4-bc20-427a-9425-7e7d90e228cd.png" 
+                src="/lovable-uploads/a50c144f-d06e-4e25-8ab1-e84a96d28f32.png" 
                 alt="Students collaborating" 
                 className="w-full h-full object-cover rounded-2xl"
               />
@@ -96,8 +96,8 @@ const Hero = () => {
                 <span className="text-xs font-medium text-cyan-300">AI Powered</span>
               </div>
               
-              {/* Success Rate stat directly on image - top right position */}
-              <div className="absolute top-16 right-8 glass-effect px-3 py-2 rounded-xl shadow-lg backdrop-blur-md border border-cyan-400/20 flex items-center gap-2 animate-float" style={{animationDelay: "0.5s"}}>
+              {/* Success Rate stat directly on image - left position */}
+              <div className="absolute top-16 left-8 glass-effect px-3 py-2 rounded-xl shadow-lg backdrop-blur-md border border-cyan-400/20 flex items-center gap-2 animate-float" style={{animationDelay: "0.5s"}}>
                 <div className="w-9 h-9 bg-primary/30 rounded-full flex items-center justify-center">
                   <Clock className="w-5 h-5 text-cyan-400" />
                 </div>
@@ -107,7 +107,7 @@ const Hero = () => {
                 </div>
               </div>
               
-              {/* Universities stat directly on image - bottom right position */}
+              {/* Universities stat directly on image - right bottom position */}
               <div className="absolute bottom-8 right-8 glass-effect px-3 py-2 rounded-xl shadow-lg backdrop-blur-md border border-cyan-400/20 flex items-center gap-2 animate-float" style={{animationDelay: "1s"}}>
                 <div className="w-9 h-9 bg-cyan-500/30 rounded-full flex items-center justify-center">
                   <Check className="w-5 h-5 text-cyan-400" />
@@ -115,6 +115,22 @@ const Hero = () => {
                 <div className="text-left">
                   <div className="text-xs text-cyan-400/90 font-medium">Universities</div>
                   <div className="text-xl font-bold text-white">250+</div>
+                </div>
+              </div>
+              
+              {/* AI Talent Advisor UI at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 glass-effect p-4 backdrop-blur-md border-t border-cyan-400/20">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-cyan-400 flex items-center justify-center text-black shrink-0">
+                    AI
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-bold text-white">AI Talent Advisor</span>
+                      <span className="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full">Active</span>
+                    </div>
+                    <p className="text-sm text-gray-200">Based on your profile, I've identified your strengths in analytical thinking and creative problem solving.</p>
+                  </div>
                 </div>
               </div>
             </div>
