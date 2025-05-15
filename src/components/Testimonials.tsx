@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+// Extended testimonials for better scrolling effect
 const testimonials = [
   {
     name: "Alex Johnson",
@@ -38,13 +39,31 @@ const testimonials = [
     role: "Law School Applicant",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1974",
     content: "QuestApply's AI assistant helped me craft a compelling personal statement that highlighted my unique experiences. The detailed guidance through each step of the application process was beyond valuable."
+  },
+  {
+    name: "David Kim",
+    role: "International Student",
+    image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80&w=1974",
+    content: "As an international student, navigating the US application system was overwhelming. QuestApply's step-by-step guidance helped me understand requirements and deadlines, making the process much less stressful."
+  },
+  {
+    name: "Rachel Greene",
+    role: "Arts Major",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=1976",
+    content: "The AI recognized my creative talents and helped me build an impressive portfolio. I received acceptance letters from three prestigious art schools that perfectly matched my artistic style and career goals."
+  },
+  {
+    name: "Michael Carter",
+    role: "PhD Candidate",
+    image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=2070",
+    content: "QuestApply helped me find research opportunities aligned with my interests and connected me with professors doing groundbreaking work in my field. The personalized SOP guidance was instrumental in my acceptance."
   }
 ];
 
 // Split testimonials into columns for the staggered effect
-const firstColumnTestimonials = [testimonials[0], testimonials[3], testimonials[5]];
-const secondColumnTestimonials = [testimonials[1], testimonials[4]];
-const thirdColumnTestimonials = [testimonials[2]];
+const firstColumnTestimonials = [testimonials[0], testimonials[3], testimonials[6], testimonials[2]];
+const secondColumnTestimonials = [testimonials[1], testimonials[4], testimonials[7]];
+const thirdColumnTestimonials = [testimonials[2], testimonials[5], testimonials[8]];
 
 const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -74,83 +93,53 @@ const Testimonials = () => {
       }
     };
   }, []);
-  
-  // Scroll animation for columns
+
+  // Initialize column animations
   useEffect(() => {
     if (!isVisible) return;
 
-    const scrollOptions = {
-      top: 0,
-      left: 0,
-      behavior: 'smooth' as ScrollBehavior
+    // Animation speeds and parameters
+    const columnSpeed = {
+      first: 40000, // 40 seconds for full cycle
+      second: 50000, // 50 seconds for full cycle
+      third: 45000 // 45 seconds for full cycle
     };
 
-    // Scroll first and third columns up (negative values)
-    const scrollFirstColumn = () => {
-      if (firstColumnRef.current) {
-        const scrollDistance = firstColumnRef.current.scrollHeight - firstColumnRef.current.clientHeight;
-        firstColumnRef.current.scrollTo({
-          ...scrollOptions,
-          top: scrollDistance
-        });
+    // Set up column animations using CSS animation
+    if (firstColumnRef.current) {
+      firstColumnRef.current.style.animation = `scrollUp ${columnSpeed.first}ms linear infinite`;
+    }
+    
+    if (secondColumnRef.current) {
+      secondColumnRef.current.style.animation = `scrollDown ${columnSpeed.second}ms linear infinite`;
+    }
+    
+    if (thirdColumnRef.current) {
+      thirdColumnRef.current.style.animation = `scrollUp ${columnSpeed.third}ms linear infinite`;
+    }
+    
+    // Create the keyframe animations dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes scrollUp {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-50%); }
+        50.001% { transform: translateY(50%); }
+        100% { transform: translateY(0); }
       }
       
-      if (thirdColumnRef.current) {
-        const scrollDistance = thirdColumnRef.current.scrollHeight - thirdColumnRef.current.clientHeight;
-        thirdColumnRef.current.scrollTo({
-          ...scrollOptions,
-          top: scrollDistance
-        });
+      @keyframes scrollDown {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(50%); }
+        50.001% { transform: translateY(-50%); }
+        100% { transform: translateY(0); }
       }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
     };
-    
-    // Scroll second column down (positive values)
-    const scrollSecondColumn = () => {
-      if (secondColumnRef.current) {
-        secondColumnRef.current.scrollTo({
-          ...scrollOptions,
-          top: 0
-        });
-      }
-    };
-    
-    // Initial delay to let the columns render properly
-    const timeoutId = setTimeout(() => {
-      scrollFirstColumn();
-      scrollSecondColumn();
-      
-      // Set up alternating scroll direction for continuous animation
-      const intervalId = setInterval(() => {
-        if (firstColumnRef.current && firstColumnRef.current.scrollTop > 0) {
-          firstColumnRef.current.scrollTo({
-            ...scrollOptions,
-            top: 0
-          });
-          
-          if (thirdColumnRef.current) {
-            thirdColumnRef.current.scrollTo({
-              ...scrollOptions,
-              top: 0
-            });
-          }
-          
-          if (secondColumnRef.current) {
-            const scrollDistance = secondColumnRef.current.scrollHeight - secondColumnRef.current.clientHeight;
-            secondColumnRef.current.scrollTo({
-              ...scrollOptions,
-              top: scrollDistance
-            });
-          }
-        } else {
-          scrollFirstColumn();
-          scrollSecondColumn();
-        }
-      }, 10000); // Change direction every 10 seconds
-      
-      return () => clearInterval(intervalId);
-    }, 1000);
-    
-    return () => clearTimeout(timeoutId);
   }, [isVisible]);
 
   return (
@@ -171,58 +160,64 @@ const Testimonials = () => {
           </p>
         </div>
         
-        {/* Staggered testimonials grid with scrolling effect inspired by Cursor.com */}
+        {/* Cursor.com inspired testimonials grid with continuous scrolling */}
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {/* First column - scrolls up */}
-          <ScrollArea 
-            className="h-[600px] md:h-[700px] overflow-hidden"
-            ref={firstColumnRef}
-          >
-            <div className="space-y-8 pr-4">
-              {firstColumnTestimonials.map((testimonial, idx) => (
+          <div className="h-[700px] overflow-hidden relative">
+            <div 
+              className="space-y-6 pr-4 transition-all duration-500"
+              ref={firstColumnRef}
+              style={{ paddingBottom: "100%" }} // Create enough space for scrolling
+            >
+              {/* Double the testimonials for seamless looping */}
+              {[...firstColumnTestimonials, ...firstColumnTestimonials].map((testimonial, idx) => (
                 <TestimonialCard 
                   key={`first-${idx}`}
                   testimonial={testimonial}
                   isVisible={isVisible}
-                  delay={idx * 0.2}
+                  delay={idx * 0.1}
                 />
               ))}
             </div>
-          </ScrollArea>
+          </div>
           
           {/* Second column - scrolls down */}
-          <ScrollArea 
-            className="h-[600px] md:h-[700px] overflow-hidden md:mt-32"
-            ref={secondColumnRef}
-          >
-            <div className="space-y-8 pr-4">
-              {secondColumnTestimonials.map((testimonial, idx) => (
+          <div className="h-[700px] overflow-hidden relative mt-[-50px] md:mt-16">
+            <div 
+              className="space-y-6 pr-4 transition-all duration-500"
+              ref={secondColumnRef}
+              style={{ paddingBottom: "100%" }} // Create enough space for scrolling
+            >
+              {/* Double the testimonials for seamless looping */}
+              {[...secondColumnTestimonials, ...secondColumnTestimonials].map((testimonial, idx) => (
                 <TestimonialCard 
                   key={`second-${idx}`}
                   testimonial={testimonial}
                   isVisible={isVisible}
-                  delay={idx * 0.2 + 0.3}
+                  delay={idx * 0.1 + 0.2}
                 />
               ))}
             </div>
-          </ScrollArea>
+          </div>
           
           {/* Third column - scrolls up */}
-          <ScrollArea 
-            className="h-[600px] md:h-[700px] overflow-hidden"
-            ref={thirdColumnRef}
-          >
-            <div className="space-y-8 pr-4">
-              {thirdColumnTestimonials.map((testimonial, idx) => (
+          <div className="h-[700px] overflow-hidden relative">
+            <div 
+              className="space-y-6 pr-4 transition-all duration-500"
+              ref={thirdColumnRef}
+              style={{ paddingBottom: "100%" }} // Create enough space for scrolling
+            >
+              {/* Double the testimonials for seamless looping */}
+              {[...thirdColumnTestimonials, ...thirdColumnTestimonials].map((testimonial, idx) => (
                 <TestimonialCard 
                   key={`third-${idx}`}
                   testimonial={testimonial}
                   isVisible={isVisible}
-                  delay={idx * 0.2 + 0.4}
+                  delay={idx * 0.1 + 0.3}
                 />
               ))}
             </div>
-          </ScrollArea>
+          </div>
         </div>
       </div>
     </section>

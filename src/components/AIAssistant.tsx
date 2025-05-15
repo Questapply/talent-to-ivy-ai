@@ -19,7 +19,7 @@ const AIAssistant = () => {
                 <div className="p-6 max-h-[400px] overflow-y-auto space-y-4">
                   <div className="flex justify-end">
                     <div className="bg-gray-100 rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm">Hi, I need help finding universities for computer science programs.</p>
+                      <p className="text-sm text-gray-800">Hi, I need help finding universities for computer science programs.</p>
                     </div>
                   </div>
                   
@@ -28,13 +28,13 @@ const AIAssistant = () => {
                       AI
                     </div>
                     <div className="bg-primary/10 rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm">Hello! I'd be happy to help you find computer science programs. Could you tell me a bit about your interests within computer science? Are you more interested in artificial intelligence, software engineering, cybersecurity, or another area?</p>
+                      <p className="text-sm text-gray-800">Hello! I'd be happy to help you find computer science programs. Could you tell me a bit about your interests within computer science? Are you more interested in artificial intelligence, software engineering, cybersecurity, or another area?</p>
                     </div>
                   </div>
                   
                   <div className="flex justify-end">
                     <div className="bg-gray-100 rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm">I'm interested in artificial intelligence and machine learning.</p>
+                      <p className="text-sm text-gray-800">I'm interested in artificial intelligence and machine learning.</p>
                     </div>
                   </div>
                   
@@ -43,13 +43,13 @@ const AIAssistant = () => {
                       AI
                     </div>
                     <div className="bg-primary/10 rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm">Great choice! Based on your interest in AI and machine learning, I'd recommend looking into programs at MIT, Stanford, Carnegie Mellon, UC Berkeley, and University of Toronto. Would you like me to analyze your profile to provide more personalized recommendations?</p>
+                      <p className="text-sm text-gray-800">Great choice! Based on your interest in AI and machine learning, I'd recommend looking into programs at MIT, Stanford, Carnegie Mellon, UC Berkeley, and University of Toronto. Would you like me to analyze your profile to provide more personalized recommendations?</p>
                     </div>
                   </div>
                   
                   <div className="flex justify-end">
                     <div className="bg-gray-100 rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm">Yes, that would be helpful!</p>
+                      <p className="text-sm text-gray-800">Yes, that would be helpful!</p>
                     </div>
                   </div>
                   
@@ -58,7 +58,7 @@ const AIAssistant = () => {
                       AI
                     </div>
                     <div className="bg-primary/10 rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm typing-effect">Let me analyze your profile and find the perfect match for your talents and goals...</p>
+                      <p className="text-sm typing-effect text-gray-800">Let me analyze your profile and find the perfect match for your talents and goals...</p>
                     </div>
                   </div>
                 </div>
