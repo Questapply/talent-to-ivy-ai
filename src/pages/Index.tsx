@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
@@ -12,7 +12,9 @@ import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 
 const Index = () => {
-  // Add reveal animation on scroll
+  const cursorRef = useRef<HTMLDivElement>(null);
+  
+  // Improved reveal animation on scroll
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal');
     
@@ -31,7 +33,7 @@ const Index = () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Check on initial load
     
-    // Create particle effect
+    // Enhanced particle effect
     const createStars = () => {
       const starsContainer = document.getElementById('stars-container');
       if (!starsContainer) return;
@@ -39,13 +41,13 @@ const Index = () => {
       // Clear existing stars
       starsContainer.innerHTML = '';
       
-      const count = Math.min(window.innerWidth / 3, 100);
+      const count = Math.min(window.innerWidth / 2.5, 150);
       
       for (let i = 0; i < count; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
         
-        const size = Math.random() * 2;
+        const size = Math.random() * 3;
         const opacity = Math.random() * 0.8 + 0.2;
         
         star.style.width = `${size}px`;
@@ -63,22 +65,72 @@ const Index = () => {
     createStars();
     window.addEventListener('resize', createStars);
     
+    // Custom cursor effect
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!cursorRef.current) return;
+      
+      // Smooth cursor following with slight delay
+      setTimeout(() => {
+        cursorRef.current!.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+      }, 50);
+    };
+    
+    const handleMouseDown = () => {
+      if (!cursorRef.current) return;
+      cursorRef.current.classList.add('cursor-clicked');
+    };
+    
+    const handleMouseUp = () => {
+      if (!cursorRef.current) return;
+      cursorRef.current.classList.remove('cursor-clicked');
+    };
+    
+    const handleMouseEnter = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || 
+          target.closest('button') || target.closest('a')) {
+        cursorRef.current?.classList.add('cursor-hover');
+      }
+    };
+    
+    const handleMouseLeave = () => {
+      cursorRef.current?.classList.remove('cursor-hover');
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mouseup', handleMouseUp);
+    
+    const interactiveElements = document.querySelectorAll('button, a');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', handleMouseEnter);
+      el.addEventListener('mouseleave', handleMouseLeave);
+    });
+    
     return () => {
       window.removeEventListener('scroll', revealOnScroll);
       window.removeEventListener('resize', createStars);
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mousedown', handleMouseDown);
+      document.removeEventListener('mouseup', handleMouseUp);
+      interactiveElements.forEach(el => {
+        el.removeEventListener('mouseenter', handleMouseEnter);
+        el.removeEventListener('mouseleave', handleMouseLeave);
+      });
     };
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white relative overflow-hidden">
-      {/* Stars background effect */}
+      {/* Enhanced stars background effect */}
       <div id="stars-container" className="fixed inset-0 z-0 pointer-events-none"></div>
       
-      {/* Gradient overlay */}
-      <div className="fixed inset-0 z-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(138,86,255,0.15),transparent_70%)]"></div>
+      {/* Improved gradient overlay */}
+      <div className="fixed inset-0 z-0 opacity-30 pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(138,86,255,0.15),transparent_70%)]"></div>
+      <div className="fixed inset-0 z-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_bottom_right,rgba(32,227,178,0.15),transparent_70%)]"></div>
       
-      {/* Grid background */}
-      <div className="fixed inset-0 z-0 grid-background pointer-events-none"></div>
+      {/* Enhanced grid background */}
+      <div className="fixed inset-0 z-0 grid-background pointer-events-none opacity-70"></div>
       
       <Navbar />
       <Hero />
@@ -91,8 +143,16 @@ const Index = () => {
       <CTA />
       <Footer />
       
-      {/* Custom cursor effect - optional */}
-      <div id="custom-cursor" className="hidden md:block fixed w-8 h-8 pointer-events-none z-50 rounded-full border border-primary transition-transform duration-100 ease-out"></div>
+      {/* Enhanced custom cursor effect */}
+      <div 
+        ref={cursorRef}
+        id="custom-cursor" 
+        className="hidden md:flex fixed w-8 h-8 pointer-events-none z-50 items-center justify-center rounded-full"
+      >
+        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+        <div className="absolute w-full h-full border border-cyan-400/50 rounded-full"></div>
+        <div className="absolute w-10 h-10 border border-cyan-400/20 rounded-full animate-ping"></div>
+      </div>
     </div>
   );
 };
