@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { 
   Search, School, GraduationCap, FileText, FileCheck, Send, User
 } from 'lucide-react';
@@ -57,44 +57,6 @@ const stages = [
 ];
 
 const HowItWorks = () => {
-  const [activeStage, setActiveStage] = useState(0);
-  const timelineRef = useRef<HTMLDivElement>(null);
-  const stageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const dotRef = useRef<HTMLDivElement>(null);
-  
-  // Track scroll and update active stage
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!timelineRef.current) return;
-      
-      // Calculate which stage is in view
-      stageRefs.current.forEach((ref, index) => {
-        if (!ref) return;
-        
-        const rect = ref.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        
-        // If stage is visible in viewport
-        if (rect.top < viewportHeight * 0.6 && rect.bottom > 0) {
-          setActiveStage(index);
-        }
-      });
-      
-      // Move the glowing dot along the timeline
-      if (dotRef.current && timelineRef.current) {
-        const timelineHeight = timelineRef.current.offsetHeight - 50; // Subtract dot height
-        const scrollPercent = activeStage / (stages.length - 1);
-        const dotPosition = scrollPercent * timelineHeight;
-        dotRef.current.style.transform = `translateY(${dotPosition}px)`;
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Call once to set initial position
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeStage]);
-
   return (
     <section id="howitworks" className="py-24 relative overflow-hidden bg-black">
       {/* Background elements */}
@@ -116,122 +78,76 @@ const HowItWorks = () => {
           </p>
         </div>
         
-        {/* Uplinq-style timeline with interactive scrolling */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Vertical timeline line */}
-          <div ref={timelineRef} className="hidden lg:block absolute left-[76px] top-12 bottom-12 w-1 bg-gradient-to-b from-cyan-400/30 via-primary/30 to-cyan-400/30 rounded-full glow-sm"></div>
-          
-          {/* Animated glowing dot that moves along timeline */}
-          <div 
-            ref={dotRef}
-            className="hidden lg:block absolute left-[76px] w-3 h-3 rounded-full bg-primary shadow-lg shadow-primary/50 z-10 transition-transform duration-500 ease-out"
-            style={{ transform: 'translateY(0px)', marginLeft: '-1px' }}
-          ></div>
-          
-          {/* Timeline stages */}
-          <div className="space-y-24 md:space-y-32">
+        {/* The roadmap section */}
+        <div className="max-w-6xl mx-auto">
+          <div className="space-y-16 md:space-y-24">
             {stages.map((stage, index) => (
-              <div 
-                key={index} 
-                ref={(el) => stageRefs.current[index] = el}
-                className={`reveal flex flex-col lg:flex-row items-start gap-6 md:gap-12 ${
-                  activeStage === index ? 'opacity-100' : 'opacity-50'
-                } transition-all duration-500`}
-              >
-                {/* Left side: Stage number and title */}
-                <div className="w-full lg:w-1/3 flex items-start gap-4">
-                  <div className={`w-14 h-14 rounded-full border-2 ${
-                    activeStage === index 
-                      ? 'border-primary text-glow-primary bg-black/80' 
-                      : 'border-white/30 bg-black/50'
-                  } flex items-center justify-center transition-all duration-300`}>
-                    <span className={`text-2xl font-bold ${
-                      activeStage === index ? 'text-primary' : 'text-white/70'
-                    }`}>
-                      {stage.number}
-                    </span>
+              <div key={index} className="reveal flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+                {/* Left side with number and title */}
+                <div className="md:w-1/3 flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-cyan-400/20 border border-primary/30 flex items-center justify-center text-shadow-md">
+                    <span className="text-2xl font-bold text-primary">{stage.number}</span>
                   </div>
-                  
                   <div>
-                    <h3 className={`text-2xl md:text-3xl font-bold ${
-                      activeStage === index ? 'text-white text-shadow-md' : 'text-white/70'
-                    } transition-all duration-300`}>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white text-shadow-md mb-1">
                       {stage.title}
                     </h3>
-                    <p className={`mt-2 text-base md:text-lg ${
-                      activeStage === index ? 'text-white/90' : 'text-white/50'
-                    } transition-all duration-300`}>
+                    <p className="text-lg text-white/80">
                       {stage.description}
                     </p>
                   </div>
                 </div>
                 
-                {/* Right side: Digital interface card */}
-                <div className={`w-full lg:w-2/3 transform transition-all duration-500 ${
-                  activeStage === index ? 'translate-y-0 opacity-100' : 'lg:translate-y-8 opacity-70'
-                }`}>
-                  <div className="relative rounded-2xl overflow-hidden border-2 border-cyan-400/30 shadow-lg shadow-primary/20">
-                    {/* Screen glow effects */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-black to-gray-900"></div>
-                    <div className="absolute inset-0 opacity-20 bg-[linear-gradient(40deg,transparent,rgba(32,227,178,0.3),transparent,rgba(138,86,255,0.3),transparent)] bg-[length:200%_200%] animate-[gradient_8s_ease_infinite]"></div>
-                    
-                    {/* Content with image background */}
-                    <div className="relative p-6 md:p-8">
+                {/* Right side with content card */}
+                <div className="md:w-2/3">
+                  <div className="bg-gradient-to-br from-black/80 to-gray-900/80 rounded-2xl overflow-hidden border border-primary/20 shadow-xl shadow-primary/10">
+                    <div className="relative p-6">
                       {/* Background image with overlay */}
-                      <div className="absolute inset-0 opacity-30">
+                      <div className="absolute inset-0 opacity-20">
                         <img 
                           src={stage.image} 
                           alt={stage.title} 
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/70"></div>
                       </div>
                       
-                      {/* Header with icon */}
-                      <div className="relative flex items-center mb-6 gap-4">
-                        <div className="w-12 h-12 rounded-lg border border-cyan-400/30 flex items-center justify-center bg-black/70 shadow-md shadow-cyan-400/10">
-                          {stage.icon}
+                      {/* Content area */}
+                      <div className="relative">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 rounded-lg border border-primary/40 flex items-center justify-center bg-black/60 shadow-lg shadow-primary/5">
+                            {stage.icon}
+                          </div>
+                          <h4 className="text-xl font-bold text-white">{stage.title}</h4>
                         </div>
-                        <h4 className="text-xl font-bold text-white text-shadow-md">{stage.title}</h4>
-                      </div>
-                      
-                      {/* Digital content area */}
-                      <div className="relative mt-4">
-                        <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg p-4">
-                          <p className="text-base md:text-lg text-white text-shadow-sm">{stage.description}</p>
-                          
-                          {/* Progress indicators */}
-                          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-lg p-3">
-                              <div className="text-xs text-white/50 mb-1">Progress</div>
-                              <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                <div 
-                                  className="h-full bg-gradient-to-r from-primary to-cyan-400 rounded-full"
-                                  style={{ width: `${(index + 1) / stages.length * 100}%` }}
-                                ></div>
-                              </div>
-                              <div className="mt-1 text-xs text-end text-cyan-400">
-                                {Math.round((index + 1) / stages.length * 100)}%
-                              </div>
-                            </div>
+                        
+                        <div className="mt-6 space-y-4">
+                          <div className="bg-black/60 backdrop-blur-sm border border-white/10 rounded-lg p-4">
+                            <p className="text-white/90">{stage.description}</p>
                             
-                            <div className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-lg p-3 flex items-center">
-                              <div className="flex-1">
-                                <div className="text-xs text-white/50 mb-1">Stage {stage.number}</div>
-                                <div className="text-sm text-white font-medium">
-                                  {index + 1} of {stages.length} stages
+                            {/* Progress indicators */}
+                            <div className="mt-6 flex items-center justify-between">
+                              <div className="w-full">
+                                <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                                  <div 
+                                    className="h-full bg-gradient-to-r from-primary to-cyan-400 rounded-full"
+                                    style={{ width: `${(index + 1) / stages.length * 100}%` }}
+                                  ></div>
                                 </div>
-                              </div>
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-cyan-400/20 border border-white/10 flex items-center justify-center">
-                                <span className="text-white font-bold">{stage.number}</span>
+                                <div className="mt-1 flex justify-between text-xs">
+                                  <span className="text-white/60">Stage {index + 1} of {stages.length}</span>
+                                  <span className="text-cyan-400">
+                                    {Math.round((index + 1) / stages.length * 100)}% Complete
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       
-                      {/* Glowing bottom border */}
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/80 to-cyan-400/80"></div>
+                      {/* Subtle glow at bottom of card */}
+                      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
                     </div>
                   </div>
                 </div>
