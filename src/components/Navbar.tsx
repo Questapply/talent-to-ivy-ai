@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,9 +20,7 @@ const Navbar = () => {
   return (
     <nav className={`w-full py-4 fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
       <div className="container px-4 mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <span className="text-2xl font-bold text-gradient">QuestApply</span>
-        </div>
+        <Logo />
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
@@ -35,7 +34,7 @@ const Navbar = () => {
           <Button variant="outline" className="border-white/20 text-gray-300 hover:bg-white/5 hover:text-white">
             Log In
           </Button>
-          <Button className="bg-primary hover:bg-primary/90 relative overflow-hidden group neon-glow">
+          <Button className="bg-gradient-to-r from-cyan-400 to-cyan-500 hover:bg-opacity-90 text-black relative overflow-hidden group neon-glow">
             <span className="relative z-10">Get Started</span>
             <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></span>
           </Button>
@@ -65,7 +64,7 @@ const Navbar = () => {
             <Button variant="outline" className="border-white/20 text-gray-300 hover:bg-white/5 w-full">
               Log In
             </Button>
-            <Button className="bg-primary hover:bg-primary/90 w-full neon-glow">
+            <Button className="bg-gradient-to-r from-cyan-400 to-cyan-500 hover:bg-opacity-90 text-black w-full neon-glow">
               Get Started
             </Button>
           </div>

@@ -56,8 +56,8 @@ const Hero = () => {
               Revolutionary AI for Education
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-shadow-lg">
-              <span className="block mb-2 text-white">Discover Your Talents,</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-shadow-lg">
+              <span className="block text-white">Discover Your Talents, </span>
               <span className="text-gradient-cyan relative">
                 Unlock Your Future
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-cyan-400/0 via-cyan-400/50 to-cyan-400/0"></span>
@@ -83,16 +83,15 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Enhanced visual area with better UI/UX elements */}
+          {/* Enhanced visual area showing a complete image without text overlay */}
           <div className="flex-1 relative reveal" style={{animationDelay: "0.3s"}}>
             <div className="relative w-full h-[420px] md:h-[500px] rounded-2xl overflow-hidden animate-float shadow-[0_0_40px_rgba(32,227,178,0.35)] card-glow">
               {/* Main image - students with AI education */}
               <img 
-                src="/lovable-uploads/6e08f316-9fee-4007-81b5-2c62909304ea.png" 
+                src="/lovable-uploads/b520072a-8afa-4808-b165-b800732249de.png" 
                 alt="AI University Application" 
                 className="w-full h-full object-cover rounded-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
               
               {/* AI Badge */}
               <div className="absolute top-4 right-4 glass-effect px-3 py-2 rounded-full shadow-lg flex items-center gap-2 animate-float backdrop-blur-md border border-cyan-400/20" style={{animationDelay: "1s"}}>
@@ -100,48 +99,28 @@ const Hero = () => {
                 <span className="text-xs font-medium text-cyan-300">AI Powered</span>
               </div>
               
-              {/* Enhanced Glass card */}
-              <div className="absolute bottom-6 left-6 right-6 glass-effect p-5 rounded-xl border border-cyan-400/30 backdrop-blur-lg shadow-[0_0_20px_rgba(32,227,178,0.2)]">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-black font-semibold shadow-lg cyan-glow shrink-0">
-                    AI
+              {/* Stats floating cards */}
+              <div className="absolute top-[20%] -left-14 glass-effect px-4 py-2 rounded-lg border border-white/10 backdrop-blur-md animate-float shadow-[0_0_15px_rgba(138,86,255,0.2)]" style={{animationDelay: "1.5s"}}>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
                   </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-white text-shadow-sm mb-1 flex items-center">
-                      <span>AI Talent Advisor</span>
-                      <span className="ml-2 px-2 py-0.5 bg-cyan-400/20 rounded-full text-xs text-cyan-300 border border-cyan-400/30">Active</span>
-                    </p>
-                    <p className="text-sm text-white/90 typing-effect">Based on your profile, I've identified your strengths in analytical thinking and creative problem-solving.</p>
+                  <div>
+                    <p className="text-xs text-white/70">Success Rate</p>
+                    <p className="font-bold text-white">98.7%</p>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Decorative elements */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-cyan-400/10 rounded-full blur-xl opacity-70 animate-pulse-gentle"></div>
-            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-primary/10 rounded-full blur-2xl opacity-60 animate-pulse-gentle" style={{animationDelay: "2s"}}></div>
-            
-            {/* Stats floating cards */}
-            <div className="absolute top-[20%] -left-14 glass-effect px-4 py-2 rounded-lg border border-white/10 backdrop-blur-md animate-float shadow-[0_0_15px_rgba(138,86,255,0.2)]" style={{animationDelay: "1.5s"}}>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-                </div>
-                <div>
-                  <p className="text-xs text-white/70">Success Rate</p>
-                  <p className="font-bold text-white">98.7%</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="absolute bottom-[25%] -right-10 glass-effect px-4 py-2 rounded-lg border border-white/10 backdrop-blur-md animate-float shadow-[0_0_15px_rgba(32,227,178,0.2)]" style={{animationDelay: "2s"}}>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-cyan-400/20 rounded-full flex items-center justify-center text-cyan-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                </div>
-                <div>
-                  <p className="text-xs text-white/70">Universities</p>
-                  <p className="font-bold text-white">250+</p>
+              
+              <div className="absolute bottom-[25%] -right-10 glass-effect px-4 py-2 rounded-lg border border-white/10 backdrop-blur-md animate-float shadow-[0_0_15px_rgba(32,227,178,0.2)]" style={{animationDelay: "2s"}}>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-cyan-400/20 rounded-full flex items-center justify-center text-cyan-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/70">Universities</p>
+                    <p className="font-bold text-white">250+</p>
+                  </div>
                 </div>
               </div>
             </div>
