@@ -50,8 +50,67 @@ const Hero = () => {
       
       <div className="container px-4 mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          {/* Content area - enhanced with better typography and animations */}
-          <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0 reveal">
+          {/* Swap ordering - Image on the left, content on the right */}
+          {/* Visual area with green border like in reference image */}
+          <div className="flex-1 relative reveal">
+            <div className="relative p-3 rounded-2xl overflow-hidden animate-float shadow-[0_0_40px_rgba(32,227,178,0.35)] card-glow" style={{background: "linear-gradient(to right, #033b1a, #0c6a33)"}}>
+              <div className="w-full h-[420px] md:h-[500px] rounded-2xl overflow-hidden">
+                {/* Updated to use the referenced image of students */}
+                <img 
+                  src="/lovable-uploads/44dd0539-debe-41c8-bea4-26e09cf0a9d8.png" 
+                  alt="Students working together" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              
+              {/* AI Badge - top right, similar to reference */}
+              <div className="absolute top-6 right-6 glass-effect px-4 py-2 rounded-full shadow-lg flex items-center gap-2 backdrop-blur-md border border-white/20" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
+                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                <span className="text-sm font-medium text-white">AI Powered</span>
+              </div>
+              
+              {/* Success Rate stat - positioned on left side like reference */}
+              <div className="absolute top-[25%] -left-16 glass-effect px-4 py-3 rounded-xl shadow-lg backdrop-blur-md border border-white/10 flex items-center gap-3" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
+                <div className="w-12 h-12 bg-purple-500/30 rounded-full flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-purple-400" />
+                </div>
+                <div className="text-left">
+                  <div className="text-sm text-white/80 font-medium">Success Rate</div>
+                  <div className="text-2xl font-bold text-white">98.7%</div>
+                </div>
+              </div>
+              
+              {/* Universities stat - positioned on right side like reference */}
+              <div className="absolute bottom-[25%] right-6 glass-effect px-4 py-3 rounded-xl shadow-lg backdrop-blur-md border border-white/10 flex items-center gap-3" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
+                <div className="w-12 h-12 bg-cyan-500/30 rounded-full flex items-center justify-center">
+                  <Check className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div className="text-left">
+                  <div className="text-sm text-white/80 font-medium">Universities</div>
+                  <div className="text-2xl font-bold text-white">250+</div>
+                </div>
+              </div>
+              
+              {/* AI Talent Advisor UI at bottom matching reference */}
+              <div className="absolute bottom-6 left-6 right-6 glass-effect p-4 backdrop-blur-md border border-white/10" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-cyan-500 flex items-center justify-center text-black shrink-0">
+                    AI
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="font-bold text-white text-lg">AI Talent Advisor</span>
+                      <span className="px-2 py-0.5 rounded-full text-xs bg-cyan-400/20 text-cyan-400 border border-cyan-400/30">Active</span>
+                    </div>
+                    <p className="text-sm text-white">Based on your profile, I've identified your strengths in analytical thinking and creative problem solving.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Content area - now on the right side */}
+          <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0 reveal" style={{animationDelay: "0.3s"}}>
             <div className="inline-flex items-center mb-3 px-4 py-1.5 bg-cyan-400/10 rounded-full text-cyan-400 text-sm font-medium border border-cyan-400/20 animate-float shadow-[0_0_15px_rgba(32,227,178,0.3)]">
               <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
               Revolutionary AI for Education
@@ -77,64 +136,6 @@ const Hero = () => {
               <Button size="lg" variant="outline" className="border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10 font-medium min-w-[180px] h-14 backdrop-blur-sm">
                 <span className="mr-2">▶</span> Watch Demo
               </Button>
-            </div>
-          </div>
-          
-          {/* Updated visual area with better image and green border like in reference image */}
-          <div className="flex-1 relative reveal" style={{animationDelay: "0.3s"}}>
-            <div className="relative p-3 rounded-2xl overflow-hidden animate-float shadow-[0_0_40px_rgba(32,227,178,0.35)] card-glow" style={{background: "linear-gradient(to right, #033b1a, #0c6a33)"}}>
-              <div className="w-full h-[420px] md:h-[500px] rounded-2xl overflow-hidden">
-                {/* Using the new image showing students with a green notebook */}
-                <img 
-                  src="/lovable-uploads/d4b978f3-6fff-4560-82aa-47871390515d.png" 
-                  alt="Students with girl holding green notebook" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-              
-              {/* AI Badge - top right, similar to reference */}
-              <div className="absolute top-6 right-6 glass-effect px-4 py-2 rounded-full shadow-lg flex items-center gap-2 backdrop-blur-md border border-white/20" style={{backgroundColor: 'rgba(120, 120, 120, 0.25)'}}>
-                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-                <span className="text-sm font-medium text-white">AI Powered</span>
-              </div>
-              
-              {/* Success Rate stat - positioned on left side like reference */}
-              <div className="absolute top-[25%] -left-16 glass-effect px-4 py-3 rounded-xl shadow-lg backdrop-blur-md border border-white/10 flex items-center gap-3" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
-                <div className="w-12 h-12 bg-purple-500/30 rounded-full flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-purple-400" />
-                </div>
-                <div className="text-left">
-                  <div className="text-sm text-white/80 font-medium">Success Rate</div>
-                  <div className="text-2xl font-bold text-white">98.7%</div>
-                </div>
-              </div>
-              
-              {/* Universities stat - positioned on right side like reference */}
-              <div className="absolute bottom-[25%] -right-16 glass-effect px-4 py-3 rounded-xl shadow-lg backdrop-blur-md border border-white/10 flex items-center gap-3" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
-                <div className="w-12 h-12 bg-cyan-500/30 rounded-full flex items-center justify-center">
-                  <Check className="w-6 h-6 text-cyan-400" />
-                </div>
-                <div className="text-left">
-                  <div className="text-sm text-white/80 font-medium">Universities</div>
-                  <div className="text-2xl font-bold text-white">250+</div>
-                </div>
-              </div>
-              
-              {/* AI Talent Advisor UI at bottom matching reference */}
-              <div className="absolute bottom-6 left-6 right-6 glass-effect p-4 backdrop-blur-md border border-white/10" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-cyan-500 flex items-center justify-center text-black shrink-0">
-                    AI
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="font-bold text-white text-lg">AI Talent Advisor</span>
-                      <span className="px-2 py-0.5 rounded-full text-xs bg-cyan-400/20 text-cyan-400 border border-cyan-400/30">Active</span>
-                    </div>
-                    <p className="text-sm text-white">Based on your profile, I've identified your strengths in analytical thinking and creative problem solving.</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
