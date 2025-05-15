@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works - 7 Stage Process</title>
+  <link rel="stylesheet" href="how-it-works.css">
+</head>
+<body class="bg-black text-white">
+  <section id="howitworks" class="py-24 relative overflow-hidden">
+    <!-- Background transition from black to white -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-black to-white z-0"></div>
+    
+    <div class="container px-4 mx-auto relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-block mb-3 px-3 py-1 bg-black-70 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white-10">
+          <span class="text-glow-white">The 7-Stage Process</span>
+        </div>
+        <h2 class="text-3xl md-text-5xl font-bold mb-4 text-white neon-text text-shadow-lg">
+          Your Journey to Success
+        </h2>
+        <p class="text-xl text-white-90 font-medium">
+          Our AI guides you through every step of the application process, ensuring nothing is missed.
+        </p>
+      </div>
+      
+      <!-- Timeline roadmap with glass design -->
+      <div class="relative mt-24 pb-10">
+        <!-- Vertical timeline line -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan to-purple z-0"></div>
+        
+        <!-- Timeline items will be inserted here by JavaScript -->
+        <div id="timeline-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="how-it-works.js"></script>
+</body>
+</html>
