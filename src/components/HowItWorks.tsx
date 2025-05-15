@@ -1,35 +1,28 @@
-
 import React, { useEffect } from 'react';
 import { roadmapData } from './roadmap/RoadmapData';
-
 const HowItWorks = () => {
   // Initialize reveal animation on component mount
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal');
-    
     const revealOnScroll = () => {
       for (let i = 0; i < revealElements.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = revealElements[i].getBoundingClientRect().top;
         const elementVisible = 150;
-        
         if (elementTop < windowHeight - elementVisible) {
           revealElements[i].classList.add('active');
         }
       }
     };
-    
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Initial check on mount
-    
+
     // Clean up the event listener on unmount
     return () => {
       window.removeEventListener('scroll', revealOnScroll);
     };
   }, []);
-
-  return (
-    <section id="howitworks" className="py-24 relative overflow-hidden bg-gradient-transition">
+  return <section id="howitworks" className="py-24 relative overflow-hidden bg-gradient-transition bg-slate-950">
       <div className="container px-4 mx-auto relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block mb-3 px-3 py-1 bg-black/70 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/10">
@@ -45,12 +38,9 @@ const HowItWorks = () => {
         
         {/* Reimagined alternating roadmap steps based on uplinq.com design */}
         <div className="space-y-32 mt-24">
-          {roadmapData.slice(0, 6).map((item, index) => (
-            <div 
-              key={index} 
-              className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-16 reveal`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
+          {roadmapData.slice(0, 6).map((item, index) => <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-16 reveal`} style={{
+          animationDelay: `${index * 0.2}s`
+        }}>
               {/* Content side */}
               <div className="w-full md:w-1/2 text-center md:text-left">
                 <h3 className={`text-3xl font-bold mb-3 ${index % 2 === 0 ? 'text-[#20E3B2]' : 'text-[#8A56FF]'}`}>
@@ -76,8 +66,7 @@ const HowItWorks = () => {
               {/* Visual side with enhanced animation */}
               <div className="w-full md:w-1/2 flex justify-center">
                 <div className="w-64 h-64 lg:w-80 lg:h-80 bg-[#0A0E15] rounded-xl overflow-hidden border border-[#20E3B2]/30 shadow-lg relative">
-                  {index === 0 && (
-                    <div className="w-full h-full p-8 flex items-center justify-center">
+                  {index === 0 && <div className="w-full h-full p-8 flex items-center justify-center">
                       {/* Talent Discovery Animation */}
                       <div className="w-full h-full relative">
                         <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -107,11 +96,9 @@ const HowItWorks = () => {
                         </svg>
                         <div className="absolute inset-0 animate-scan bg-gradient-to-b from-transparent via-[#20E3B2]/10 to-transparent"></div>
                       </div>
-                    </div>
-                  )}
+                    </div>}
                   
-                  {index === 1 && (
-                    <div className="w-full h-full p-8 flex items-center justify-center">
+                  {index === 1 && <div className="w-full h-full p-8 flex items-center justify-center">
                       {/* Application Process Animation */}
                       <div className="w-full h-full relative">
                         <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -144,11 +131,9 @@ const HowItWorks = () => {
                           </g>
                         </svg>
                       </div>
-                    </div>
-                  )}
+                    </div>}
                   
-                  {index === 2 && (
-                    <div className="w-full h-full p-8 flex items-center justify-center">
+                  {index === 2 && <div className="w-full h-full p-8 flex items-center justify-center">
                       {/* University Selection Animation */}
                       <div className="w-full h-full relative">
                         <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -184,11 +169,9 @@ const HowItWorks = () => {
                         </svg>
                         <div className="absolute inset-0 animate-scan bg-gradient-to-b from-transparent via-[#8A56FF]/10 to-transparent"></div>
                       </div>
-                    </div>
-                  )}
+                    </div>}
                   
-                  {index === 3 && (
-                    <div className="w-full h-full p-8 flex items-center justify-center">
+                  {index === 3 && <div className="w-full h-full p-8 flex items-center justify-center">
                       {/* Essay Writing Animation */}
                       <div className="w-full h-full relative">
                         <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -219,11 +202,9 @@ const HowItWorks = () => {
                           <path d="M160,60 Q155,80 120,80" fill="none" stroke="#20E3B2" strokeWidth="1" strokeDasharray="2,2" />
                         </svg>
                       </div>
-                    </div>
-                  )}
+                    </div>}
 
-                  {index === 4 && (
-                    <div className="w-full h-full p-8 flex items-center justify-center">
+                  {index === 4 && <div className="w-full h-full p-8 flex items-center justify-center">
                       {/* Interview Preparation Animation */}
                       <div className="w-full h-full relative">
                         <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -256,11 +237,9 @@ const HowItWorks = () => {
                         </svg>
                         <div className="absolute inset-0 animate-scan bg-gradient-to-b from-transparent via-[#20E3B2]/10 to-transparent"></div>
                       </div>
-                    </div>
-                  )}
+                    </div>}
 
-                  {index === 5 && (
-                    <div className="w-full h-full p-8 flex items-center justify-center">
+                  {index === 5 && <div className="w-full h-full p-8 flex items-center justify-center">
                       {/* Success Celebration Animation */}
                       <div className="w-full h-full relative">
                         <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -272,7 +251,9 @@ const HowItWorks = () => {
                           </defs>
                           
                           {/* Celebration elements */}
-                          <circle cx="100" cy="100" r="50" fill="none" stroke="url(#success-gradient)" strokeWidth="2" className="animate-feature-university-rotate" style={{transformOrigin: 'center'}} />
+                          <circle cx="100" cy="100" r="50" fill="none" stroke="url(#success-gradient)" strokeWidth="2" className="animate-feature-university-rotate" style={{
+                      transformOrigin: 'center'
+                    }} />
                           
                           <g className="animate-pulse-gentle">
                             {/* Trophy */}
@@ -293,27 +274,21 @@ const HowItWorks = () => {
                         
                         {/* Confetti effect */}
                         <div className="absolute inset-0">
-                          {Array.from({length: 20}).map((_, i) => (
-                            <div 
-                              key={i}
-                              className="absolute w-2 h-2 rounded-full"
-                              style={{
-                                backgroundColor: i % 2 === 0 ? '#20E3B2' : '#8A56FF',
-                                left: `${Math.random() * 100}%`,
-                                top: `${Math.random() * 100}%`,
-                                opacity: Math.random() * 0.7 + 0.3,
-                                animation: `feature-data-pulse ${Math.random() * 3 + 2}s infinite`
-                              }}
-                            ></div>
-                          ))}
+                          {Array.from({
+                      length: 20
+                    }).map((_, i) => <div key={i} className="absolute w-2 h-2 rounded-full" style={{
+                      backgroundColor: i % 2 === 0 ? '#20E3B2' : '#8A56FF',
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      opacity: Math.random() * 0.7 + 0.3,
+                      animation: `feature-data-pulse ${Math.random() * 3 + 2}s infinite`
+                    }}></div>)}
                         </div>
                       </div>
-                    </div>
-                  )}
+                    </div>}
                 </div>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* 3D Cube Animation Section */}
@@ -374,8 +349,6 @@ const HowItWorks = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HowItWorks;
