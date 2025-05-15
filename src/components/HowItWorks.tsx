@@ -1,8 +1,33 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { roadmapData } from './roadmap/RoadmapData';
 
 const HowItWorks = () => {
+  // Initialize reveal animation on component mount
+  useEffect(() => {
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+      for (let i = 0; i < revealElements.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = revealElements[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          revealElements[i].classList.add('active');
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Initial check on mount
+    
+    // Clean up the event listener on unmount
+    return () => {
+      window.removeEventListener('scroll', revealOnScroll);
+    };
+  }, []);
+
   return (
     <section id="howitworks" className="py-24 relative overflow-hidden bg-[#0A0E15]">
       {/* Background elements */}

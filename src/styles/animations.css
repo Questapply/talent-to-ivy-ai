@@ -63,11 +63,12 @@
   100% { transform: translateY(100%); }
 }
 
-/* 3D Cube Animation */
+/* 3D Cube Animation - Improved for smoother rotation */
 .scene {
   width: 300px;
   height: 300px;
   perspective: 800px;
+  margin: 0 auto;
 }
 
 .cube {
@@ -77,6 +78,7 @@
   transform-style: preserve-3d;
   transform: translateZ(-150px);
   animation: rotate-cube 20s infinite linear;
+  will-change: transform; /* Performance optimization */
 }
 
 .cube__face {
@@ -93,6 +95,9 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  backdrop-filter: blur(5px); /* Added blur for more modern look */
+  box-shadow: inset 0 0 15px rgba(32, 227, 178, 0.2); /* Interior glow */
+  transition: all 0.3s ease; /* Smooth transition for interactive effects */
 }
 
 .cube__face--front  { transform: rotateY(0deg) translateZ(150px); }
@@ -105,6 +110,11 @@
 @keyframes rotate-cube {
   0% { transform: translateZ(-150px) rotateX(0deg) rotateY(0deg); }
   100% { transform: translateZ(-150px) rotateX(360deg) rotateY(360deg); }
+}
+
+/* Add hover effect for the cube faces */
+.cube:hover {
+  animation-play-state: paused; /* Pause animation when hovering */
 }
 
 .animate-float {
@@ -161,7 +171,7 @@
   }
 }
 
-/* Reveal animation for scrolling */
+/* Reveal animation for scrolling - Enhanced */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -171,4 +181,10 @@
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Add a glow effect for text labels */
+.text-glow-white {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7),
+              0 0 10px rgba(255, 255, 255, 0.5);
 }
