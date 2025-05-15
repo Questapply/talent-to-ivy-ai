@@ -6,17 +6,20 @@ const features = [
   {
     icon: <BrainCircuit className="h-10 w-10 text-primary" />,
     title: "AI Talent Discovery",
-    description: "Our advanced AI analyzes your skills, interests, and past achievements to identify your unique talents and potential."
+    description: "Our advanced AI analyzes your skills, interests, and past achievements to identify your unique talents and potential.",
+    image: "/lovable-uploads/51903c37-f0ce-4390-9e4d-d1e41d6971b4.png"
   },
   {
     icon: <Rocket className="h-10 w-10 text-primary" />,
     title: "Streamlined Applications",
-    description: "Fully automated 7-stage process guides you from school selection to final application submission."
+    description: "Fully automated 7-stage process guides you from school selection to final application submission.",
+    image: "/lovable-uploads/d9b42a15-bb67-4584-b8e6-206df0361c99.png"
   },
   {
     icon: <GraduationCap className="h-10 w-10 text-primary" />,
     title: "University Matching",
-    description: "Connect with top universities that align perfectly with your talents, goals, and academic profile."
+    description: "Connect with top universities that align perfectly with your talents, goals, and academic profile.",
+    image: "/lovable-uploads/d4b978f3-6fff-4560-82aa-47871390515d.png"
   }
 ];
 
@@ -40,25 +43,40 @@ const Features = () => {
           </p>
         </div>
         
+        {/* Updated feature cards to match the Uplinq design */}
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="relative card-glass rounded-xl p-8 transition-all duration-300 hover:shadow-xl group card-glow"
-              style={{animationDelay: `${index * 0.2}s`}}
+              className="relative rounded-xl overflow-hidden transition-all duration-300 group bg-black border border-white/5"
             >
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 to-cyan-400/50 rounded-b-xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-              
-              <div className="w-16 h-16 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                {feature.icon}
+              {/* Dark overlay with image */}
+              <div className="relative h-64 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black z-10"></div>
+                <img 
+                  src={feature.image} 
+                  alt={feature.title}
+                  className="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700"
+                />
+                
+                {/* Animated overlay effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-cyan-400/30 opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-10"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                  <h3 className="text-2xl font-bold mb-2 text-white">{feature.title}</h3>
+                </div>
               </div>
               
-              <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
-              <p className="text-gray-400 mb-5">{feature.description}</p>
+              <div className="p-6">
+                <p className="text-gray-400 mb-5">{feature.description}</p>
+                
+                <a href="#" className="inline-flex items-center text-primary font-medium hover:underline">
+                  Learn more <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
               
-              <a href="#" className="inline-flex items-center text-primary font-medium group-hover:underline">
-                Learn more <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              {/* Decorative border effect */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 to-cyan-400/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
             </div>
           ))}
         </div>
