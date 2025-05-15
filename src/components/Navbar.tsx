@@ -17,7 +17,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`w-full py-4 fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+    <nav className={`w-full py-4 fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
       <div className="container px-4 mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <span className="text-2xl font-bold text-gradient">QuestApply</span>
@@ -25,17 +25,17 @@ const Navbar = () => {
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">Features</a>
-          <a href="#howitworks" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">How It Works</a>
-          <a href="#testimonials" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">Testimonials</a>
-          <a href="#universities" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">Universities</a>
+          <a href="#features" className="text-sm font-medium text-gray-300 hover:text-primary/90 transition-colors">Features</a>
+          <a href="#howitworks" className="text-sm font-medium text-gray-300 hover:text-primary/90 transition-colors">How It Works</a>
+          <a href="#testimonials" className="text-sm font-medium text-gray-300 hover:text-primary/90 transition-colors">Testimonials</a>
+          <a href="#universities" className="text-sm font-medium text-gray-300 hover:text-primary/90 transition-colors">Universities</a>
         </div>
         
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5">
+          <Button variant="outline" className="border-white/20 text-gray-300 hover:bg-white/5 hover:text-white">
             Log In
           </Button>
-          <Button className="bg-primary hover:bg-primary/90 relative overflow-hidden group">
+          <Button className="bg-primary hover:bg-primary/90 relative overflow-hidden group neon-glow">
             <span className="relative z-10">Get Started</span>
             <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></span>
           </Button>
@@ -43,7 +43,7 @@ const Navbar = () => {
         
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+          className="md:hidden p-2 rounded-md text-gray-300 hover:bg-gray-800 transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
@@ -55,17 +55,17 @@ const Navbar = () => {
       </div>
       
       {/* Mobile Menu */}
-      <div className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-md transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+      <div className={`md:hidden absolute top-full left-0 right-0 glass-effect border-t border-b border-white/10 transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <div className="container px-4 mx-auto py-4 flex flex-col space-y-4">
-          <a href="#features" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors py-2">Features</a>
-          <a href="#howitworks" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors py-2">How It Works</a>
-          <a href="#testimonials" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors py-2">Testimonials</a>
-          <a href="#universities" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors py-2">Universities</a>
+          <a href="#features" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors py-2">Features</a>
+          <a href="#howitworks" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors py-2">How It Works</a>
+          <a href="#testimonials" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors py-2">Testimonials</a>
+          <a href="#universities" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors py-2">Universities</a>
           <div className="flex flex-col space-y-2 pt-2">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 w-full">
+            <Button variant="outline" className="border-white/20 text-gray-300 hover:bg-white/5 w-full">
               Log In
             </Button>
-            <Button className="bg-primary hover:bg-primary/90 w-full">
+            <Button className="bg-primary hover:bg-primary/90 w-full neon-glow">
               Get Started
             </Button>
           </div>

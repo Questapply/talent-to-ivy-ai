@@ -12,21 +12,24 @@ const universities = [
 
 const Universities = () => {
   return (
-    <section id="universities" className="py-12 border-t border-gray-100">
-      <div className="container px-4 mx-auto">
+    <section id="universities" className="py-16 border-t border-white/10 relative">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(138,86,255,0.05),transparent_70%)]"></div>
+      
+      <div className="container px-4 mx-auto relative">
         <div className="text-center mb-10">
-          <h3 className="text-xl font-semibold text-gray-500">
+          <h3 className="text-xl font-semibold text-gray-400">
             Connecting you with top universities worldwide
           </h3>
         </div>
         
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
           {universities.map((university, index) => (
-            <div key={index} className="text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-100 rounded-full mx-auto mb-2 flex items-center justify-center">
-                <span className="font-bold text-gray-700 text-sm">{university.name.split(' ').map(word => word[0]).join('')}</span>
+            <div key={index} className="text-center group">
+              <div className="w-16 h-16 md:w-20 md:h-20 glass-effect rounded-full mx-auto mb-2 flex items-center justify-center border border-white/10 group-hover:border-primary/30 transition-all">
+                <span className="font-bold text-primary text-sm">{university.name.split(' ').map(word => word[0]).join('')}</span>
               </div>
-              <p className="text-sm text-gray-600">{university.name}</p>
+              <p className="text-sm text-gray-400 group-hover:text-white transition-colors">{university.name}</p>
             </div>
           ))}
         </div>
