@@ -3,16 +3,16 @@ import React from 'react';
 
 const Logo = () => {
   return (
-    <div className="flex items-center space-x-1">
+    <div className="flex items-center space-x-2">
       <div className="relative">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center shadow-lg rotate-3 transform transition-all duration-300 hover:rotate-6 hover:scale-110">
-          <div className="w-6 h-6 rounded-md bg-black/80 flex items-center justify-center">
-            <div className="text-cyan-400 font-bold text-xl">Q</div>
+        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 group">
+          <div className="w-7 h-7 rounded-md bg-black/80 flex items-center justify-center backdrop-blur-sm">
+            <span className="text-gradient-cyan font-bold text-xl">Q</span>
           </div>
+          <span className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_10px_rgba(32,227,178,0.8)] animate-pulse"></span>
         </div>
-        <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(32,227,178,0.8)] animate-pulse"></div>
       </div>
-      <div className="font-bold text-xl">
+      <div className="font-bold text-xl tracking-tight">
         <span className="text-white">Quest</span>
         <span className="text-gradient-cyan">Apply</span>
       </div>

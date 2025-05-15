@@ -33,7 +33,7 @@ const Hero = () => {
   return (
     <section 
       ref={heroRef} 
-      className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-16 lg:pt-32 lg:pb-24 min-h-[90vh] flex items-center"
+      className="relative overflow-hidden pt-16 pb-12 md:pt-20 md:pb-16 lg:pt-28 lg:pb-20 min-h-[90vh] flex items-center"
     >
       {/* Improved background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(32,227,178,0.15),transparent_60%)] bg-black"></div>
@@ -57,11 +57,8 @@ const Hero = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-shadow-lg">
-              <span className="block text-white">Discover Your Talents, </span>
-              <span className="text-gradient-cyan relative">
-                Unlock Your Future
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-cyan-400/0 via-cyan-400/50 to-cyan-400/0"></span>
-              </span>
+              <span className="text-white">Discover Your Talents, </span>
+              <span className="text-gradient-cyan">Unlock Your Future</span>
             </h1>
             
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
@@ -86,10 +83,10 @@ const Hero = () => {
           {/* Enhanced visual area showing a complete image without text overlay */}
           <div className="flex-1 relative reveal" style={{animationDelay: "0.3s"}}>
             <div className="relative w-full h-[420px] md:h-[500px] rounded-2xl overflow-hidden animate-float shadow-[0_0_40px_rgba(32,227,178,0.35)] card-glow">
-              {/* Main image - students with AI education */}
+              {/* Using the image of students with a teacher */}
               <img 
-                src="/lovable-uploads/b520072a-8afa-4808-b165-b800732249de.png" 
-                alt="AI University Application" 
+                src="/lovable-uploads/36c235b4-facc-46f0-8ab2-33b4cd669f30.png" 
+                alt="Students with teacher" 
                 className="w-full h-full object-cover rounded-2xl"
               />
               
@@ -97,31 +94,6 @@ const Hero = () => {
               <div className="absolute top-4 right-4 glass-effect px-3 py-2 rounded-full shadow-lg flex items-center gap-2 animate-float backdrop-blur-md border border-cyan-400/20" style={{animationDelay: "1s"}}>
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
                 <span className="text-xs font-medium text-cyan-300">AI Powered</span>
-              </div>
-              
-              {/* Stats floating cards */}
-              <div className="absolute top-[20%] -left-14 glass-effect px-4 py-2 rounded-lg border border-white/10 backdrop-blur-md animate-float shadow-[0_0_15px_rgba(138,86,255,0.2)]" style={{animationDelay: "1.5s"}}>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-                  </div>
-                  <div>
-                    <p className="text-xs text-white/70">Success Rate</p>
-                    <p className="font-bold text-white">98.7%</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="absolute bottom-[25%] -right-10 glass-effect px-4 py-2 rounded-lg border border-white/10 backdrop-blur-md animate-float shadow-[0_0_15px_rgba(32,227,178,0.2)]" style={{animationDelay: "2s"}}>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-cyan-400/20 rounded-full flex items-center justify-center text-cyan-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                  </div>
-                  <div>
-                    <p className="text-xs text-white/70">Universities</p>
-                    <p className="font-bold text-white">250+</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
