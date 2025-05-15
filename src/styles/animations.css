@@ -69,6 +69,25 @@
   100% { stroke-dashoffset: 0; }
 }
 
+/* Feature cards animation */
+@keyframes feature-data-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes feature-insight-wave {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-5px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes feature-university-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* 3D Cube Animation - Improved for smoother rotation */
 .scene {
   width: 300px;
@@ -198,4 +217,17 @@
 .text-glow-white {
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.7),
               0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* New gradient background transitions for sections */
+.bg-gradient-transition {
+  background: linear-gradient(to bottom, #000000, #ffffff);
+  background-size: 100% 1000px;
+  background-repeat: no-repeat;
+}
+
+.bg-gradient-transition-reverse {
+  background: linear-gradient(to bottom, #ffffff, #000000);
+  background-size: 100% 1000px;
+  background-repeat: no-repeat;
 }
