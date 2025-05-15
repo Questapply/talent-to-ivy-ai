@@ -1,3 +1,4 @@
+
 /* Enhanced Animations */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
@@ -88,13 +89,13 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Enhanced orbit animation for country flags */
-@keyframes orbit {
+/* Enhanced circular orbit animation for country flags */
+@keyframes circular-orbit {
   0% {
-    transform: rotate(0deg) translateX(50px) rotate(0deg);
+    transform: rotate(0deg) translateX(120px) rotate(0deg);
   }
   100% {
-    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+    transform: rotate(360deg) translateX(120px) rotate(-360deg);
   }
 }
 
@@ -208,6 +209,11 @@
 /* Enhanced orbit animation class */
 .animate-orbit {
   animation: orbit 10s linear infinite;
+}
+
+/* New circular orbit animation class */
+.animate-circular-orbit {
+  animation: circular-orbit 20s linear infinite;
 }
 
 @keyframes draw {
