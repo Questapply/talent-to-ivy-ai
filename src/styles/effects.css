@@ -1,15 +1,15 @@
 
 /* Neon glow effects */
 .neon-glow {
-  box-shadow: 0 0 10px rgba(138, 86, 255, 0.5), 
-              0 0 20px rgba(138, 86, 255, 0.3), 
-              0 0 30px rgba(138, 86, 255, 0.1);
+  box-shadow: 0 0 10px rgba(32, 227, 178, 0.5), 
+              0 0 20px rgba(32, 227, 178, 0.3), 
+              0 0 30px rgba(32, 227, 178, 0.1);
 }
 
 .neon-text {
-  text-shadow: 0 0 5px rgba(138, 86, 255, 0.7), 
-               0 0 10px rgba(138, 86, 255, 0.5), 
-               0 0 15px rgba(138, 86, 255, 0.3);
+  text-shadow: 0 0 5px rgba(32, 227, 178, 0.7), 
+               0 0 10px rgba(32, 227, 178, 0.5), 
+               0 0 15px rgba(32, 227, 178, 0.3);
 }
 
 .cyan-glow {
@@ -20,14 +20,14 @@
 
 .grid-background {
   background-image: 
-    linear-gradient(rgba(50, 50, 70, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(50, 50, 70, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(32, 227, 178, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32, 227, 178, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 /* Digital interface effects */
 .digital-screen {
-  background: linear-gradient(135deg, #0f1219 0%, #1c1e2a 100%);
+  background: linear-gradient(135deg, #0a0e15 0%, #12161e 100%);
   border: 1px solid rgba(32, 227, 178, 0.3);
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(32, 227, 178, 0.2);
@@ -72,7 +72,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(32, 227, 178, 0.1), transparent);
   transition: all 0.5s ease;
 }
 
@@ -86,8 +86,8 @@
 
 /* Holographic effect */
 .holographic {
-  background: linear-gradient(135deg, rgba(138, 86, 255, 0.1) 0%, rgba(32, 227, 178, 0.1) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(32, 227, 178, 0.1) 0%, rgba(32, 227, 178, 0.05) 100%);
+  border: 1px solid rgba(32, 227, 178, 0.1);
   border-radius: 8px;
   position: relative;
   overflow: hidden;
@@ -103,8 +103,8 @@
   background: linear-gradient(
     45deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.05) 30%,
-    rgba(255, 255, 255, 0.1) 40%,
+    rgba(32, 227, 178, 0.05) 30%,
+    rgba(32, 227, 178, 0.1) 40%,
     transparent 50%,
     transparent 100%
   );
@@ -151,4 +151,27 @@
   100% {
     background-position: 0 100px;
   }
+}
+
+/* Uplinq-style effects */
+.tech-border {
+  border: 1px solid rgba(32, 227, 178, 0.2);
+  box-shadow: 0 0 15px rgba(32, 227, 178, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(10, 14, 21, 0.7) 0%, rgba(15, 19, 26, 0.8) 100%);
+  backdrop-filter: blur(10px);
+}
+
+.tech-glow {
+  position: relative;
+}
+
+.tech-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(32, 227, 178, 0.7), transparent);
 }
