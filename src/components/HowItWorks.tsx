@@ -1,6 +1,6 @@
-
 import React, { useEffect } from 'react';
 import { roadmapData } from './roadmap/RoadmapData';
+import { Users, Check } from 'lucide-react';
 
 const HowItWorks = () => {
   // Initialize reveal animation on component mount
