@@ -103,6 +103,64 @@ const HowItWorks = () => {
             ))}
           </div>
         </div>
+
+        {/* 3D Cube Animation Section - Added after roadmap */}
+        <div className="mt-24 flex justify-center items-center">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-3 px-3 py-1 bg-black/70 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/10">
+              <span className="text-glow-white">Interactive Experience</span>
+            </div>
+            <h2 className="text-3xl font-bold mb-4 text-white neon-text">
+              Visualize Your Path
+            </h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto mb-12">
+              Our 3D interactive platform helps you visualize every step of your application journey
+            </p>
+          </div>
+        </div>
+
+        <div className="flex justify-center items-center">
+          <div className="scene mx-auto mb-20">
+            <div className="cube">
+              <div className="cube__face cube__face--front">
+                <div className="flex flex-col items-center justify-center h-full">
+                  <div className="text-[#20E3B2] text-4xl mb-2">01</div>
+                  <span className="text-xl text-white">School</span>
+                </div>
+              </div>
+              <div className="cube__face cube__face--back">
+                <div className="flex flex-col items-center justify-center h-full">
+                  <div className="text-[#20E3B2] text-4xl mb-2">02</div>
+                  <span className="text-xl text-white">Program</span>
+                </div>
+              </div>
+              <div className="cube__face cube__face--right">
+                <div className="flex flex-col items-center justify-center h-full">
+                  <div className="text-[#20E3B2] text-4xl mb-2">03</div>
+                  <span className="text-xl text-white">Research</span>
+                </div>
+              </div>
+              <div className="cube__face cube__face--left">
+                <div className="flex flex-col items-center justify-center h-full">
+                  <div className="text-[#20E3B2] text-4xl mb-2">04</div>
+                  <span className="text-xl text-white">Apply</span>
+                </div>
+              </div>
+              <div className="cube__face cube__face--top">
+                <div className="flex flex-col items-center justify-center h-full">
+                  <div className="text-[#20E3B2] text-4xl mb-2">05</div>
+                  <span className="text-xl text-white">Essays</span>
+                </div>
+              </div>
+              <div className="cube__face cube__face--bottom">
+                <div className="flex flex-col items-center justify-center h-full">
+                  <div className="text-[#20E3B2] text-4xl mb-2">06</div>
+                  <span className="text-xl text-white">Success</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
