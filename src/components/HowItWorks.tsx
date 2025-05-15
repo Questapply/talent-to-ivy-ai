@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { roadmapData } from './roadmap/RoadmapData';
 import { Users, Check } from 'lucide-react';
@@ -90,40 +89,40 @@ const HowItWorks = () => {
                         {/* School finder animation - Enhanced with country flags */}
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="relative w-28 h-28">
-                            <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-400/50" style={{animation: 'none'}}></div>
+                            <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-400/50"></div>
                             
                             {/* USA Flag */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '0s'}}>
-                              <div className="w-full h-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-                                <span className="text-white text-xs font-bold">USA</span>
+                            <div className="absolute w-10 h-10 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '0s'}}>
+                              <div className="w-full h-full bg-gradient-to-r from-red-600 via-white to-blue-600 flex items-center justify-center">
+                                <img src="/lovable-uploads/d9b42a15-bb67-4584-b8e6-206df0361c99.png" alt="USA Flag" className="w-full h-full object-cover" />
                               </div>
                             </div>
                             
                             {/* UK Flag */}
-                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '2s'}}>
-                              <div className="w-full h-full bg-gradient-to-br from-red-600 to-blue-800 flex items-center justify-center">
-                                <span className="text-white text-xs font-bold">UK</span>
+                            <div className="absolute w-10 h-10 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '3s'}}>
+                              <div className="w-full h-full bg-blue-800 flex items-center justify-center">
+                                <img src="/lovable-uploads/36c235b4-facc-46f0-8ab2-33b4cd669f30.png" alt="UK Flag" className="w-full h-full object-cover" />
                               </div>
                             </div>
                             
                             {/* Canada Flag */}
-                            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '4s'}}>
-                              <div className="w-full h-full bg-gradient-to-br from-red-600 to-white flex items-center justify-center">
-                                <span className="text-red-600 text-xs font-bold">CA</span>
+                            <div className="absolute w-10 h-10 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '6s'}}>
+                              <div className="w-full h-full bg-white flex items-center justify-center">
+                                <img src="/lovable-uploads/a50c144f-d06e-4e25-8ab1-e84a96d28f32.png" alt="Canada Flag" className="w-full h-full object-cover" />
                               </div>
                             </div>
                             
                             {/* Australia Flag */}
-                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '6s'}}>
-                              <div className="w-full h-full bg-gradient-to-br from-blue-800 to-blue-600 flex items-center justify-center">
-                                <span className="text-white text-xs font-bold">AU</span>
+                            <div className="absolute w-10 h-10 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '9s'}}>
+                              <div className="w-full h-full bg-blue-800 flex items-center justify-center">
+                                <img src="/lovable-uploads/b520072a-8afa-4808-b165-b800732249de.png" alt="Australia Flag" className="w-full h-full object-cover" />
                               </div>
                             </div>
                             
                             {/* Germany Flag */}
-                            <div className="absolute top-1/4 right-1/4 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '8s'}}>
+                            <div className="absolute w-10 h-10 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '12s'}}>
                               <div className="w-full h-full bg-gradient-to-b from-black via-red-600 to-yellow-400 flex items-center justify-center">
-                                <span className="text-white text-xs font-bold">DE</span>
+                                <img src="/lovable-uploads/d4b978f3-6fff-4560-82aa-47871390515d.png" alt="Germany Flag" className="w-full h-full object-cover" />
                               </div>
                             </div>
                             
