@@ -50,26 +50,25 @@ const Hero = () => {
       
       <div className="container px-4 mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          {/* Swap ordering - Image on the left, content on the right */}
-          {/* Visual area with green border like in reference image */}
+          {/* Visual area with green border */}
           <div className="flex-1 relative reveal">
             <div className="relative p-3 rounded-2xl overflow-hidden animate-float shadow-[0_0_40px_rgba(32,227,178,0.35)] card-glow" style={{background: "linear-gradient(to right, #033b1a, #0c6a33)"}}>
               <div className="w-full h-[420px] md:h-[500px] rounded-2xl overflow-hidden">
-                {/* Updated to use the referenced image of students */}
+                {/* Updated student image to fill the container fully */}
                 <img 
                   src="/lovable-uploads/44dd0539-debe-41c8-bea4-26e09cf0a9d8.png" 
                   alt="Students working together" 
-                  className="w-full h-full object-cover rounded-2xl"
+                  className="w-full h-full object-cover object-center rounded-2xl"
                 />
               </div>
               
-              {/* AI Badge - top right, similar to reference */}
+              {/* AI Badge - top right */}
               <div className="absolute top-6 right-6 glass-effect px-4 py-2 rounded-full shadow-lg flex items-center gap-2 backdrop-blur-md border border-white/20" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
                 <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
                 <span className="text-sm font-medium text-white">AI Powered</span>
               </div>
               
-              {/* Success Rate stat - positioned on left side like reference */}
+              {/* Success Rate stat - positioned on left side */}
               <div className="absolute top-[25%] -left-16 glass-effect px-4 py-3 rounded-xl shadow-lg backdrop-blur-md border border-white/10 flex items-center gap-3" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
                 <div className="w-12 h-12 bg-purple-500/30 rounded-full flex items-center justify-center">
                   <Clock className="w-6 h-6 text-purple-400" />
@@ -80,7 +79,7 @@ const Hero = () => {
                 </div>
               </div>
               
-              {/* Universities stat - positioned on right side like reference */}
+              {/* Universities stat - positioned on right side */}
               <div className="absolute bottom-[25%] right-6 glass-effect px-4 py-3 rounded-xl shadow-lg backdrop-blur-md border border-white/10 flex items-center gap-3" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
                 <div className="w-12 h-12 bg-cyan-500/30 rounded-full flex items-center justify-center">
                   <Check className="w-6 h-6 text-cyan-400" />
@@ -91,7 +90,7 @@ const Hero = () => {
                 </div>
               </div>
               
-              {/* AI Talent Advisor UI at bottom matching reference */}
+              {/* AI Talent Advisor UI at bottom */}
               <div className="absolute bottom-6 left-6 right-6 glass-effect p-4 backdrop-blur-md border border-white/10" style={{backgroundColor: 'rgba(20, 20, 20, 0.7)'}}>
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-cyan-500 flex items-center justify-center text-black shrink-0">
@@ -109,7 +108,7 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Content area - now on the right side */}
+          {/* Content area - right side */}
           <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0 reveal" style={{animationDelay: "0.3s"}}>
             <div className="inline-flex items-center mb-3 px-4 py-1.5 bg-cyan-400/10 rounded-full text-cyan-400 text-sm font-medium border border-cyan-400/20 animate-float shadow-[0_0_15px_rgba(32,227,178,0.3)]">
               <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
@@ -117,7 +116,8 @@ const Hero = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-shadow-lg">
-              <span className="text-white">Discover Your Talents, Unlock Your Future</span>
+              <span className="text-white">Discover Your Talents,</span><br/>
+              <span className="text-gradient-cyan">Unlock Your Future</span>
             </h1>
             
             <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
@@ -145,3 +145,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
