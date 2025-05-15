@@ -17,7 +17,7 @@ const universities = [
 const Universities = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
-  const scrollSpeed = 0.3; // Reduced for smoother animation
+  const scrollSpeed = 0.2; // Slower for smoother animation
   
   // Animation effect for scrolling the universities from right to left
   useEffect(() => {
@@ -31,7 +31,7 @@ const Universities = () => {
       container.appendChild(clone);
     });
     
-    // Set initial position to start items from right
+    // Set initial position
     container.scrollLeft = 0;
     let position = 0;
     
@@ -115,7 +115,7 @@ const Universities = () => {
           >
             {universities.map((university, index) => (
               <div key={index} className="text-center group university-item flex-shrink-0 transition-all duration-300 hover:scale-110">
-                <div className="w-24 h-24 md:w-28 md:h-28 glass-effect rounded-full mx-auto mb-4 flex items-center justify-center border border-[#20E3B2]/10 group-hover:border-[#20E3B2]/50 transition-all overflow-hidden p-2">
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full mx-auto mb-4 flex items-center justify-center border border-[#20E3B2]/10 group-hover:border-[#20E3B2]/50 transition-all overflow-hidden bg-[#0F1319] p-2">
                   <img 
                     src={university.logo} 
                     alt={`${university.name} logo`}
