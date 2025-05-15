@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { roadmapData } from './roadmap/RoadmapData';
 import { Users, Check } from 'lucide-react';
@@ -86,17 +87,48 @@ const HowItWorks = () => {
                     {/* Custom animations per roadmap item */}
                     {index === 0 && (
                       <div className="relative w-full h-full">
-                        {/* School finder animation */}
+                        {/* School finder animation - Enhanced with country flags */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="relative w-24 h-24">
-                            <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-400/50 animate-spin" style={{ animationDuration: '20s' }}></div>
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full"></div>
-                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full"></div>
-                            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-green-500 rounded-full"></div>
-                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-yellow-500 rounded-full"></div>
-                            <div className="absolute top-1/4 right-1/4 w-3 h-3 bg-purple-500 rounded-full"></div>
-                            <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-orange-500 rounded-full"></div>
-                            <div className="w-10 h-10 bg-black/80 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                          <div className="relative w-28 h-28">
+                            <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-400/50" style={{animation: 'none'}}></div>
+                            
+                            {/* USA Flag */}
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '0s'}}>
+                              <div className="w-full h-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                                <span className="text-white text-xs font-bold">USA</span>
+                              </div>
+                            </div>
+                            
+                            {/* UK Flag */}
+                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '2s'}}>
+                              <div className="w-full h-full bg-gradient-to-br from-red-600 to-blue-800 flex items-center justify-center">
+                                <span className="text-white text-xs font-bold">UK</span>
+                              </div>
+                            </div>
+                            
+                            {/* Canada Flag */}
+                            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '4s'}}>
+                              <div className="w-full h-full bg-gradient-to-br from-red-600 to-white flex items-center justify-center">
+                                <span className="text-red-600 text-xs font-bold">CA</span>
+                              </div>
+                            </div>
+                            
+                            {/* Australia Flag */}
+                            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '6s'}}>
+                              <div className="w-full h-full bg-gradient-to-br from-blue-800 to-blue-600 flex items-center justify-center">
+                                <span className="text-white text-xs font-bold">AU</span>
+                              </div>
+                            </div>
+                            
+                            {/* Germany Flag */}
+                            <div className="absolute top-1/4 right-1/4 w-8 h-8 rounded-full overflow-hidden animate-orbit" style={{animationDuration: '15s', animationDelay: '8s'}}>
+                              <div className="w-full h-full bg-gradient-to-b from-black via-red-600 to-yellow-400 flex items-center justify-center">
+                                <span className="text-white text-xs font-bold">DE</span>
+                              </div>
+                            </div>
+                            
+                            {/* Central Icon */}
+                            <div className="w-12 h-12 bg-black/80 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
                               <div className="w-6 h-6 text-cyan-400">
                                 {item.icon}
                               </div>
@@ -111,7 +143,11 @@ const HowItWorks = () => {
                         {/* Program finder animation */}
                         <div className="grid grid-cols-3 gap-2 w-full h-full">
                           {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                            <div key={i} className="bg-gradient-to-br from-blue-500/20 to-green-500/20 rounded-md flex items-center justify-center p-1 backdrop-blur-sm">
+                            <div 
+                              key={i} 
+                              className="bg-gradient-to-br from-blue-500/20 to-green-500/20 rounded-md flex items-center justify-center p-1 backdrop-blur-sm animate-float"
+                              style={{ animationDelay: `${i * 0.2}s` }}
+                            >
                               <div className="text-xs text-cyan-400 opacity-80">
                                 {['CS', 'BIO', 'ENG', 'MED', 'ART', 'LAW', 'BUS', 'ECO', 'PSY'][i]}
                               </div>
@@ -132,16 +168,19 @@ const HowItWorks = () => {
                     
                     {index === 2 && (
                       <div className="relative w-full h-full">
-                        {/* Professor finder animation */}
+                        {/* Professor finder animation with actual professor photos */}
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="flex space-x-4">
                             {[0, 1, 2].map((i) => (
-                              <div key={i} className="w-12 h-12 rounded-full bg-gradient-to-b from-cyan-400/20 to-transparent flex items-center justify-center animate-float" style={{ animationDelay: `${i * 0.3}s` }}>
-                                <div className="w-10 h-10 rounded-full bg-black/80 flex items-center justify-center">
-                                  <div className="w-6 h-6 text-cyan-400">
-                                    <Users size={18} />
+                              <div key={i} className="relative w-12 h-12 rounded-full bg-gradient-to-b from-cyan-400/20 to-transparent flex items-center justify-center animate-float" style={{ animationDelay: `${i * 0.3}s` }}>
+                                <div className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center overflow-hidden border border-cyan-400/30">
+                                  <div className="w-full h-full bg-gradient-to-br from-blue-500/30 to-purple-500/30 flex items-center justify-center text-white text-xs font-medium">
+                                    {i === 0 && <span>Dr.J</span>}
+                                    {i === 1 && <span>Prof.S</span>}
+                                    {i === 2 && <span>Dr.M</span>}
                                   </div>
                                 </div>
+                                <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-500 border border-white"></div>
                               </div>
                             ))}
                           </div>
@@ -154,15 +193,29 @@ const HowItWorks = () => {
                     
                     {index === 3 && (
                       <div className="relative w-full h-full">
-                        {/* Resume builder animation */}
+                        {/* Enhanced Resume builder animation */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-32 h-24 border border-cyan-400/30 rounded-md bg-black/40 p-2 flex flex-col">
-                            <div className="w-full h-2 bg-white/20 rounded-sm mb-2"></div>
-                            <div className="w-4/5 h-2 bg-white/20 rounded-sm mb-2"></div>
-                            <div className="w-3/4 h-2 bg-white/20 rounded-sm mb-1"></div>
-                            <div className="w-5/6 h-2 bg-white/20 rounded-sm mb-2"></div>
-                            <div className="w-2/3 h-2 bg-white/20 rounded-sm"></div>
-                            <div className="absolute top-0 right-0 w-1 h-full bg-cyan-400/30 animate-pulse-gentle"></div>
+                          <div className="relative">
+                            <div className="absolute -left-8 -top-2 w-16 h-20 rounded border border-cyan-400/30 bg-black/40 p-1 rotate-[-5deg] z-10">
+                              <div className="w-full h-full bg-black/30 flex flex-col justify-center items-center">
+                                <div className="w-8 h-8 rounded-full bg-gray-500/20 mb-1"></div>
+                                <div className="w-10 h-1 bg-white/20 rounded-sm mb-1"></div>
+                                <div className="w-8 h-1 bg-white/20 rounded-sm mb-1"></div>
+                                <div className="w-10 h-1 bg-white/20 rounded-sm"></div>
+                              </div>
+                            </div>
+
+                            <div className="w-32 h-24 border-2 border-cyan-400/60 rounded-md bg-black/40 p-2 flex flex-col z-20 animate-pulse-gentle" style={{animationDuration: '3s'}}>
+                              <div className="w-1/2 h-2 bg-cyan-400/60 rounded-sm mb-1"></div>
+                              <div className="w-full h-2 bg-white/20 rounded-sm mb-2"></div>
+                              <div className="w-full h-2 bg-white/20 rounded-sm mb-1"></div>
+                              <div className="w-4/5 h-2 bg-white/20 rounded-sm mb-2"></div>
+                              <div className="w-full h-2 bg-white/20 rounded-sm"></div>
+                              <div className="absolute top-0 right-0 w-1 h-full bg-cyan-400/60 animate-scan"></div>
+                            </div>
+
+                            <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-cyan-400/20 animate-ping"></div>
+                            <div className="absolute bottom-3 left-3 w-4 h-4 rounded-full bg-purple-400/20 animate-ping" style={{animationDelay: '1s'}}></div>
                           </div>
                         </div>
                       </div>
@@ -179,6 +232,20 @@ const HowItWorks = () => {
                               <div className="h-2 w-full bg-cyan-400/40 rounded"></div>
                             </div>
                             <div className="absolute bottom-3 left-3 w-2 h-4 bg-cyan-400/80 animate-pulse"></div>
+                            
+                            {/* Add glowing particles */}
+                            {[0, 1, 2, 3].map((i) => (
+                              <div 
+                                key={i} 
+                                className="absolute w-1.5 h-1.5 rounded-full bg-cyan-400/80 animate-float"
+                                style={{
+                                  top: `${Math.random() * 80 + 10}%`, 
+                                  left: `${Math.random() * 80 + 10}%`,
+                                  animationDuration: `${3 + Math.random() * 2}s`,
+                                  animationDelay: `${i * 0.5}s`
+                                }}
+                              ></div>
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -186,20 +253,44 @@ const HowItWorks = () => {
                     
                     {index === 5 && (
                       <div className="relative w-full h-full">
-                        {/* LOR animation */}
+                        {/* Enhanced LOR animation */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="flex space-x-2">
-                            <div className="w-20 h-24 border border-cyan-400/30 rounded-md bg-black/40 p-3 relative rotate-[-5deg]">
+                          <div className="flex space-x-4">
+                            <div className="w-20 h-24 border border-cyan-400/60 rounded-md bg-black/40 p-3 relative rotate-[-8deg] animate-float" style={{animationDuration: '3s'}}>
                               <div className="h-2 w-full bg-white/20 rounded mb-1"></div>
-                              <div className="h-2 w-4/5 bg-white/20 rounded mb-1"></div>
+                              <div className="h-2 w-4/5 bg-white/20 rounded mb-3"></div>
                               <div className="h-2 w-full bg-white/20 rounded mb-1"></div>
-                              <div className="absolute bottom-3 right-3 w-8 h-5 border-b border-cyan-400/70"></div>
+                              <div className="h-2 w-4/5 bg-white/20 rounded mb-3"></div>
+                              <div className="absolute bottom-3 right-3 w-8 h-5 border-b border-cyan-400/70">
+                                <div className="w-full h-full flex items-end">
+                                  <div className="w-full h-0.5 bg-cyan-400/70 animate-pulse" style={{animationDuration: '1.5s'}}></div>
+                                </div>
+                              </div>
+                              <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cyan-400/30 flex items-center justify-center text-[8px] text-white border border-cyan-400/50">
+                                A+
+                              </div>
                             </div>
-                            <div className="w-20 h-24 border border-cyan-400/30 rounded-md bg-black/40 p-3 relative rotate-[5deg] mt-2">
+                            
+                            <div className="w-20 h-24 border border-purple-400/60 rounded-md bg-black/40 p-3 relative rotate-[8deg] animate-float" style={{animationDuration: '4s', animationDelay: '0.5s'}}>
                               <div className="h-2 w-full bg-white/20 rounded mb-1"></div>
-                              <div className="h-2 w-4/5 bg-white/20 rounded mb-1"></div>
+                              <div className="h-2 w-4/5 bg-white/20 rounded mb-3"></div>
                               <div className="h-2 w-full bg-white/20 rounded mb-1"></div>
-                              <div className="absolute bottom-3 right-3 w-8 h-5 border-b border-purple-400/70"></div>
+                              <div className="h-2 w-4/5 bg-white/20 rounded mb-3"></div>
+                              <div className="absolute bottom-3 right-3 w-8 h-5 border-b border-purple-400/70">
+                                <div className="w-full h-full flex items-end">
+                                  <div className="w-full h-0.5 bg-purple-400/70 animate-pulse" style={{animationDuration: '1.7s'}}></div>
+                                </div>
+                              </div>
+                              <div className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-purple-400/30 flex items-center justify-center text-[8px] text-white border border-purple-400/50">
+                                A+
+                              </div>
+                            </div>
+                            
+                            {/* Add floating seal/stamp */}
+                            <div className="absolute top-1/4 right-1/4 w-10 h-10 rounded-full border-2 border-dashed border-yellow-400/60 animate-spin" style={{animationDuration: '10s'}}>
+                              <div className="w-8 h-8 rounded-full bg-yellow-400/20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                                <span className="text-yellow-300 text-[8px] font-bold">APPROVED</span>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -208,20 +299,31 @@ const HowItWorks = () => {
                     
                     {index === 6 && (
                       <div className="relative w-full h-full">
-                        {/* Application submission animation */}
+                        {/* Enhanced Application submission animation */}
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="relative w-32 h-16">
-                            <div className="w-24 h-24 border border-cyan-400/30 rounded-md bg-black/40 absolute left-0 -top-4 rotate-[-5deg] z-10"></div>
-                            <div className="w-24 h-24 border border-cyan-400/30 rounded-md bg-black/40 absolute right-0 -top-6 rotate-[5deg] z-20"></div>
-                            <div className="w-24 h-24 border border-cyan-400/30 rounded-md bg-black/40 absolute left-4 -top-3 z-30 flex items-center justify-center">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400/30 to-purple-500/30 flex items-center justify-center">
-                                <Check className="h-5 w-5 text-cyan-400" />
+                            <div className="w-24 h-24 border border-cyan-400/30 rounded-md bg-black/40 absolute left-0 -top-4 rotate-[-5deg] z-10 animate-float" style={{animationDuration: '3s'}}></div>
+                            <div className="w-24 h-24 border border-purple-400/30 rounded-md bg-black/40 absolute right-0 -top-6 rotate-[5deg] z-20 animate-float" style={{animationDuration: '4s', animationDelay: '0.3s'}}></div>
+                            
+                            <div className="w-24 h-24 border-2 border-cyan-400/50 rounded-md bg-black/40 absolute left-4 -top-3 z-30 flex items-center justify-center animate-pulse-gentle" style={{animationDuration: '2s'}}>
+                              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400/30 via-purple-500/30 to-cyan-400/30 animate-pulse-gentle flex items-center justify-center" style={{animationDuration: '3s'}}>
+                                <Check className="h-6 w-6 text-cyan-400" />
                               </div>
+                              
+                              {/* Add flying paper animations */}
+                              <div className="absolute -top-4 -right-2 w-6 h-8 bg-white/10 rounded-sm rotate-[-15deg] animate-float" style={{animationDuration: '5s', animationDelay: '0.2s'}}></div>
+                              <div className="absolute -bottom-4 -left-2 w-6 h-8 bg-white/10 rounded-sm rotate-[15deg] animate-float" style={{animationDuration: '4.5s', animationDelay: '0.8s'}}></div>
                             </div>
+                            
                             <div className="absolute z-40 top-16 left-1/2 transform -translate-x-1/2 flex space-x-1">
                               <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse-gentle" style={{animationDelay: '0s'}}></div>
                               <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse-gentle" style={{animationDelay: '0.3s'}}></div>
                               <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse-gentle" style={{animationDelay: '0.6s'}}></div>
+                            </div>
+                            
+                            {/* Progress indication */}
+                            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1.5 bg-black/50 rounded-full overflow-hidden">
+                              <div className="h-full bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full animate-data-stream" style={{width: '100%'}}></div>
                             </div>
                           </div>
                         </div>
