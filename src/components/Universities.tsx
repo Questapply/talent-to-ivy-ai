@@ -2,21 +2,21 @@
 import React, { useRef, useEffect } from 'react';
 
 const universities = [
-  { name: "Harvard University", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "HU" },
-  { name: "Stanford University", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "SU" },
-  { name: "MIT", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "M" },
-  { name: "UC Berkeley", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "UB" },
-  { name: "Princeton University", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "PU" },
-  { name: "University of Toronto", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "UoT" },
-  { name: "Oxford University", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "OU" },
-  { name: "Cambridge University", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "CU" },
-  { name: "Yale University", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "YU" },
-  { name: "Columbia University", logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000", abbr: "COU" }
+  { name: "Harvard University", logo: "https://1000logos.net/wp-content/uploads/2017/02/Harvard-Logo.png", abbr: "HU" },
+  { name: "Stanford University", logo: "https://1000logos.net/wp-content/uploads/2017/02/Stanford-Logo.png", abbr: "SU" },
+  { name: "MIT", logo: "https://1000logos.net/wp-content/uploads/2017/02/MIT-Logo.png", abbr: "MIT" },
+  { name: "UC Berkeley", logo: "https://1000logos.net/wp-content/uploads/2022/07/UC-Berkeley-Logo.png", abbr: "UCB" },
+  { name: "Princeton University", logo: "https://1000logos.net/wp-content/uploads/2018/03/Princeton-Logo-1.png", abbr: "PU" },
+  { name: "University of Toronto", logo: "https://1000logos.net/wp-content/uploads/2018/02/University-of-Toronto-Logo.png", abbr: "UoT" },
+  { name: "Oxford University", logo: "https://1000logos.net/wp-content/uploads/2017/03/Oxford-Logo.png", abbr: "OU" },
+  { name: "Cambridge University", logo: "https://1000logos.net/wp-content/uploads/2017/02/Cambridge-Logo.png", abbr: "CU" },
+  { name: "Yale University", logo: "https://1000logos.net/wp-content/uploads/2017/02/Yale-Logo.png", abbr: "YU" },
+  { name: "Columbia University", logo: "https://1000logos.net/wp-content/uploads/2017/02/Columbia-University-Logo.png", abbr: "COU" }
 ];
 
 const Universities = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollSpeed = 0.5;
+  const scrollSpeed = 0.2; // Reduced speed for smoother animation
   
   // Animation effect for scrolling the universities horizontally
   useEffect(() => {
@@ -68,8 +68,12 @@ const Universities = () => {
           >
             {universities.map((university, index) => (
               <div key={index} className="text-center group university-item flex-shrink-0">
-                <div className="w-20 h-20 md:w-24 md:h-24 glass-effect rounded-full mx-auto mb-2 flex items-center justify-center border border-white/10 group-hover:border-primary/30 transition-all">
-                  <span className="font-bold text-primary text-xl">{university.abbr}</span>
+                <div className="w-20 h-20 md:w-24 md:h-24 glass-effect rounded-full mx-auto mb-2 flex items-center justify-center border border-white/10 group-hover:border-primary/30 transition-all overflow-hidden p-1">
+                  <img 
+                    src={university.logo} 
+                    alt={`${university.name} logo`}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <p className="text-sm text-gray-400 group-hover:text-white transition-colors">{university.name}</p>
               </div>
